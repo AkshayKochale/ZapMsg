@@ -1,0 +1,587 @@
+@import "https://fonts.googleapis.com/css2?family=Popins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Popins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.heartbeat {
+    animation: pulse 2s infinite;
+}
+
+:root {
+    --primary-color: #1995AD;
+    --secondary-color: #A1D6E2;
+    --main-color: #F1F1F2;
+}
+
+.title-logo img {
+    width: 1.5625rem; /* 25px */
+    height: 1.5625rem; /* 25px */
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    background-color: var(--main-color);
+}
+
+/* Additional CSS for hidden elements */
+.login-cls {
+    display: none;
+}
+
+/* Adjust visibility of elements when login form is shown */
+#loginContactDiv {
+    display: flex;
+}
+
+/* Ensure the layout is still intact */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem;
+    gap: 2.5rem;
+    max-width: 75rem;
+    margin: 5rem auto 0;
+}
+
+
+
+.login-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 31.25rem;
+}
+
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.05rem; /* 20px */
+}
+
+/* Position and style the cancel button */
+.cancel-btn {
+    position: absolute;
+    top: -0.5rem; /* Adjust as needed */
+    right: -0.2rem; /* Adjust as needed */
+    background: transparent;
+    border-radius: 25%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: gray;
+    opacity: 0.7;
+    display: block;
+}
+
+/* Ensure login form stays in its container */
+.loginform {
+    position: relative;
+    /* margin-top: 20vh; */
+    background-color: white;
+    padding: 1.5rem; /* 40px */
+    border-radius: 0.625rem; /* 10px */
+    box-shadow: 0px 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* 4px 12px */
+    width: 90%;
+    max-width: 30rem; 
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+
+
+}
+
+
+#loginDiv{
+    display: none;
+    position: relative;
+    width: 40%;
+    height: 20%;
+
+}
+
+/* Add a class for handling the visibility and positioning of the login form */
+ /* .loginform.show {
+    transform: scale(1);
+    opacity: 1;
+}  */
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.2125rem; /* 5px */
+    color: #151515;
+    font-weight: 500;
+    font-size: medium;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 0.625rem; /* 10px */
+    margin-bottom: 0.9375rem; /* 15px */
+    border-radius: 0.25rem; /* 4px */
+    border: 1px solid #ccc;
+    font-size: 0.7rem; /* 16px */
+}
+
+.feature-item strong {
+    font-size: 1.125rem; /* 18px */
+}
+
+.feature-item p {
+    opacity: 0.7;
+}
+
+#mainFeatureContainer {
+    background-color: var(--main-color);
+    padding-top: 1%;
+}
+
+button {
+    padding: 0.525rem; /* 10px */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.375rem; /* 6px */
+    cursor: pointer;
+    font-size: 1rem; /* 16px */
+    margin-top: 0.625rem; /* 10px */
+    text-align: center;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+.separator {
+    text-align: center;
+    margin: 0.25rem 0; /* 20px */
+    position: relative;
+}
+
+.separator::before,
+.separator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 0.0625rem; /* 1px */
+    background-color: #ccc;
+}
+
+.separator::before {
+    left: 0;
+}
+
+.separator::after {
+    right: 0;
+}
+
+.social-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.425rem; /* 10px */
+    border: none;
+    border-radius: 0.25rem; /* 4px */
+    font-size: 0.8rem; /* 16px */
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 0.625rem; /* 10px */
+    color: white;
+}
+
+.social-icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem; /* 20px */
+    margin-right: 0.625rem; /* 10px */
+}
+
+.github {
+    background-color: #333;
+}
+
+.github:hover {
+    background-color: #444;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+.google:hover {
+    background-color: #c33c2d;
+}
+
+.login-links {
+    margin-top: 0.20rem; /* 20px */
+    text-align: center;
+}
+
+.login-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.7375rem; /* 15px */
+    margin: 0 0.525rem; /* 10px */
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+#titlemsg {
+    font-size: 2.5rem; /* xx-large */
+    color: var(--primary-color);
+    margin: 10% 0;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.9375rem; /* 15px */
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.title-logo {
+    font-size: 1.5rem; /* 24px */
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem; /* 40px */
+    gap: 2.5rem; /* 40px */
+    max-width: 75rem; /* 1200px */
+    margin: 5rem auto 0; /* 80px */
+}
+
+.image-div img {
+    width: 100%;
+    max-width: 37.5rem; /* 600px */
+}
+
+.login-contact {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem; /* 20px */
+    max-width: 31.25rem; /* 500px */
+}
+
+.tagline h1 {
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.25rem; /* 20px */
+}
+
+.login-buttons {
+    display: flex;
+    gap: 1.25rem; /* 20px */
+}
+
+.btn-login,
+.btn-contact {
+    text-decoration: none;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    border-radius: 0.375rem; /* 6px */
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 7.5rem; /* 120px */
+}
+
+.btn-login:hover,
+.btn-contact:hover {
+    background-color: #146a7c;
+    color: #f1f1f1;
+}
+
+/* Features */
+.features-headline {
+    text-align: center;
+    margin: 2.5rem 0 1.25rem; /* 40px 20px */
+}
+
+.features-headline h2 {
+    font-size: 1.75rem; /* 28px */
+    font-weight: bold;
+    color: var(--primary-color);
+    border-bottom: 0.125rem solid var(--primary-color); /* 2px */
+    display: inline-block;
+    padding-bottom: 0.625rem; /* 10px */
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 2.5rem; /* 40px */
+    margin-top: 1.25rem; /* 20px */
+}
+
+.feature-box {
+    background-color: white;
+    padding: 1.25rem; /* 20px */
+    border-radius: 0.625rem; /* 10px */
+    box-shadow: 0px 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* 4px 12px */
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem; /* 20px */
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.625rem; /* 10px */
+}
+
+.feature-item img {
+    width: 3.125rem; /* 50px */
+}
+
+.feature-item p {
+    margin: 0;
+}
+
+/* Why Choose Us */
+.why-choose-us {
+    padding: 2.5rem; /* 40px */
+    text-align: center;
+    margin-top: 2.5rem; /* 40px */
+}
+
+.why-choose-us h2 {
+    font-size: 2rem; /* 32px */
+    color: var(--primary-color);
+    margin-bottom: 1.875rem; /* 30px */
+    font-weight: bold;
+}
+
+.reasons {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1.875rem; /* 30px */
+    max-width: 75rem; /* 1200px */
+    margin: 0 auto;
+}
+
+.reason {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 0.625rem; /* 10px */
+    padding: 1.25rem; /* 20px */
+    box-shadow: 0px 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* 4px 12px */
+    width: 48%;
+    max-width: 25rem; /* 400px */
+    text-align: left;
+}
+
+.reason img {
+    width: 3.125rem; /* 50px */
+    margin-right: 1.25rem; /* 20px */
+}
+
+.reason strong {
+    font-size: 1.125rem; /* 18px */
+    color: var(--primary-color);
+}
+
+.reason p {
+    margin: 0.3125rem 0 0; /* 5px */
+    color: #333;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--main-color);
+    padding: 1.25rem; /* 20px */
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem; /* 10px */
+    font-size: small;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem; /* 20px */
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--main-color);
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #f1f1f1;
+}
+
+.contact-info p {
+    margin: 0.3125rem 0; /* 5px */
+}
+
+.contact-info a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1.3s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+button, .footer-links a {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover, .footer-links a:hover {
+    transform: scale(1.05);
+    background-color: #146a7c; /* Adjust if necessary */
+}
+
+.slide-in {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 1s ease, opacity 0.6s ease;
+}
+
+.slide-in.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+@media only screen and (max-width: 768px) {
+    #root {
+        grid-template-columns: 1fr; /* Stack columns on top of each other */
+    }
+
+    .loginform {
+        width: 90vw; /* Increase width to use more available screen space */
+        margin-top: 10vh; /* Adjust top margin for smaller screens */
+        padding: 2rem; /* Reduce padding for better fit */
+    }
+
+    .header {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .title-logo {
+        font-size: 1.25rem; /* Decrease font size */
+    }
+
+    .main-content {
+        flex-direction: column; /* Stack items vertically */
+        padding: 2rem; /* Adjust padding */
+        gap: 2rem; /* Reduce gap between items */
+    }
+
+    .image-div img {
+        max-width: 90vw; /* Fit image within screen width */
+    }
+
+    .login-contact {
+        max-width: 90vw; /* Increase width to use more screen space */
+    }
+
+    .tagline h1 {
+        font-size: 1.5rem; /* Decrease font size */
+    }
+
+    .login-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 1rem; /* Adjust gap */
+    }
+
+    .btn-login,
+    .btn-contact {
+        width: 100%; /* Full width for buttons */
+        padding: 0.75rem; /* Adjust padding */
+    }
+
+    .features {
+        flex-direction: column; /* Stack features vertically */
+        padding: 1.5rem; /* Adjust padding */
+    }
+
+    .feature-box {
+        width: 100%; /* Full width for feature boxes */
+        margin-bottom: 1rem; /* Adjust spacing between boxes */
+    }
+
+    .reason {
+        width: 100%; /* Full width for reasons */
+        margin-bottom: 1.5rem; /* Adjust spacing */
+    }
+
+    .footer {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .footer-links {
+        flex-direction: column; /* Stack links vertically */
+        gap: 0.75rem; /* Adjust gap */
+    }
+}
