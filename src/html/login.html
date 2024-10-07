@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../component/main.js" ></script>
+    <script src="../component/Header.js"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div id="main-div"> 
+
+        <div id="image-container">
+            <img class="loginImg" src="../assets/loginpage.jpg">
+        </div>
+       <div id="loginDiv" class="login-cls">
+
+
+        <div class="loginform">
+            <img width="30" height="30" src="https://img.icons8.com/windows/96/password-window.png" alt="password-window"/>
+            <div class="title">
+                
+                Sign In</div>
+
+            <button class="cancel-btn" onclick="toggleLogin()">&#10005;</button> <!-- Cancel Button -->
+            
+            <form onsubmit="dbLogin(event)">
+               
+                <input type="text" id="username" placeholder="Enter Username" required />
+
+                <input type="password" id="password" placeholder="Enter Password" required />
+
+                <button type="submit">Login</button>
+
+                <div class="separator">or</div>
+
+                <!-- Google Login Button with Icon -->
+                 <div class="other-login">
+                    <button class="social-login google" onclick="login('google')">
+                        <img src="../assets/icons8-google-plus.svg" alt="Google logo" class="social-icon" />
+                    Google
+                    </button>
+
+                    <!-- GitHub Login Button with Icon -->
+                    <button class="social-login github" onclick="login('github')">
+                        <img src="../assets/icons8-github.svg" alt="GitHub logo" class="social-icon" />
+                    GitHub
+                    </button>
+            </div>
+                <!-- Links for Forgot Password and Create Account -->
+                <div class="login-links">
+                    <a href="./register.html" class="create-account">Create New Account</a>
+                    <a href="./contact.html" class="forgot-password">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+    function toggleLogin()
+    {
+        window.location.href="/";
+    }
+
+</script>
+</html>

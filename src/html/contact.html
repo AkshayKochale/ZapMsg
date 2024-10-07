@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../component/Header.js"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+     <div class="main">
+        <div id="image-container">
+            <img src="../assets/contact.jpg" alt=""/>
+
+        </div>
+    <div class="contact-form-container">
+        <button class="cancel-btn" onclick="toggleLogin()">&#10005;</button> 
+        <img width="30" height="30" src="https://img.icons8.com/ios/50/reply-all.png" alt="reply-all"/>
+        <h2 class="tagLabel">Contact Us</h2>
+        <form id="contactForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required />
+
+            <label for="message">Message:</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Your Message" required></textarea>
+
+            <button type="submit" class="submitbtn">Send</button>
+        </form>
+    </div>
+</div>   
+</body>
+
+<script>
+
+    function toggleLogin()
+    {
+        window.location.href="/";
+    }
+
+</script>
+</html>

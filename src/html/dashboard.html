@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZapMsg Dashboard</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="../component/Header.js"></script>
+</head>
+<body>
+    
+    
+    <div id="header-placeholder"></div>
+    <div class="dashboard-container">
+        <div class="tabs">
+
+            <button class="tab-btn" onclick="changeContent('Clients')">
+                <img src="https://img.icons8.com/windows/96/FFFFFF/group-foreground-selected.png" class="tab-icon"
+                 alt="group-foreground-selected"/> Clients
+            </button>
+            <button class="tab-btn" onclick="changeContent('In-App Message')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/inbox.png" alt="In-App Message" class="tab-icon"> In-App Message
+            </button>
+            <button class="tab-btn" onclick="changeContent('Email')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/email.png" alt="Email" class="tab-icon"> Email
+            </button>
+            <button class="tab-btn" onclick="changeContent('WhatsApp')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp" class="tab-icon"> WhatsApp
+            </button>
+            <div class="spacer"></div> <!-- Spacer for better alignment -->
+            <button class="tab-btn" onclick="changeContent('History')">
+                <img src="https://img.icons8.com/ios-filled/50/FFFFFF/activity-history.png" alt="History" class="tab-icon"> History
+            </button>
+            <button class="tab-btn" onclick="changeContent('Settings')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Settings" class="tab-icon"> Settings
+            </button>
+        </div>
+        <div class="content" id="content">
+            Click a tab to see the content.
+        </div>
+    </div>
+
+    <script src="../component/dashboard.js"></script>
+</body>
+</html>

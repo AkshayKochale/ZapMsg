@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; 
+    background-color: var(--main-color);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+  
+  .fade-in.active {
+    opacity: 1;
+  }
+  
+  .slide-in {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 1s ease-in, opacity 1s ease-in;
+  }
+  
+  .slide-in.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+
+.heartbeat {
+    animation: pulse 2s infinite;
+}
+
+
+
+
+:root {
+    --primary-color: #F7EDFE; /* Darker, professional primary color */
+    --secondary-color: #5D5B65;
+
+    --main-color:#f5f5f5;
+    --gold-color:#E9C11C;
+    --black-color: #0F0232; 
+    --title-fontwt :350;
+    --sec-fontwt :300;
+    --third-fontwt :300;
+}
+
+
+#root {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    background-color: var(--primary-color);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.7rem; 
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    
+}
+
+.title-logo {
+    font-size: 1.5rem; 
+    font-weight: bolder !important;
+    color: var(--black-color);
+    position: relative;
+    left: 1.5%;
+}
+
+.zap-logo
+{
+    position: relative;
+    width: 13%;
+}
+
+#logout {
+    display: none;
+    background-color: rgb(197, 86, 86) !important;
+    color: #f9f7f7;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    right: 2%;
+}
+
+#logout:hover {
+    background-color: var(--hover-color) !important;
+}

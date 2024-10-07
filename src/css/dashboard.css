@@ -1,0 +1,86 @@
+
+#username {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+#logout {
+    display: block;
+}
+
+/* Dashboard container with gap */
+.dashboard-container {
+    display: flex;
+    height: calc(100vh - 90px); /* Full height, accounting for header */
+    width: 100%; /* Reduced width for margin from left/right */
+    margin: 10px auto; /* Gap from top, left, and right */
+    padding: 20px;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Left: Tabs Section */
+.tabs {
+    width: 20%; 
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Button animations */
+.tab-btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.tab-btn:hover {
+    background-color: #333;
+    transform: scale(1.01);
+}
+
+
+.content {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spacer {
+    flex-grow: 20;
+    border-bottom: 1px solid white;
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column; 
+    }
+
+    .tabs, .content {
+        width: 100%;
+        height: auto; 
+    }
+}
+
+.tab-icon {
+    width: 20px; 
+    height: 20px; 
+    margin-right: 10px; 
+}

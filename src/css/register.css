@@ -1,0 +1,94 @@
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-content {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 650px;
+    position: relative;
+}
+
+h2 {
+    text-align: center;
+    color: var(--secondary-color); /* Dark purple */
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 5%;
+}
+
+.input-half {
+    flex: 1;
+    margin-right: 2%; /* Increased gap between inputs */
+}
+
+.input-half:last-child {
+    margin-right: 2%; /* Remove margin for last element */
+}
+
+.input-full {
+    flex: 1;
+    margin-right: 2%
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: var(--secondary-color);; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #7B68EE; 
+}
+
+.required {
+    color: red; /* Change the color of the asterisk */
+    font-weight: bold; /* Make it bold */
+}
+
+.cancel-btn1 {
+    background: transparent; /* Transparent background */
+    border: none; /* No border */
+    color: var(--link-color); 
+    font-size: 22px; 
+    position: absolute; 
+    top: 15px; /* Space from the top */
+    right: 20px; /* Space from the right */
+    cursor: pointer; /* Pointer cursor */
+}

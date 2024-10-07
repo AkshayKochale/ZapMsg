@@ -5,107 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZapMsg</title>
     <link rel="stylesheet" href="./src/css/mainStyle.css" />
+    <link rel="stylesheet" href="./src/css/common.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="icon" href="./src/assets/icons8-thunder-96.png" alt="lightning-bolt"/>
+    <link rel="icon" href="./src/assets/thunderIcon.svg" alt="lightning-bolt"/>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./src/component/main.js" ></script>
 </head>
-  
 <body>
     <div class="header">
-        <div class="title-logo">
-            <img src="./src/assets/icons8-thunder-96.png" alt=""/>
-            ZapMsg
+            <img  class="header-logo" src="./src/assets/thunderIcon.svg" alt=""/>
+            <div class="header-title">ZapMsg</div>
         </div>
     </div>
 
-    <div class="thunderbolt-container">
-        <div class="thunderbolt"></div>
-    </div>
-
+    
     <div class="main-content">
-        <div class="image-div">
-            <img src="./src/assets/Desktop - 1.svg" alt="SMS Sending Image" />
-        </div>
+        <div id="main-desc" class="main-desc">
+          
+                <div class="priTitle"> Scalable Messaging Solutions for Seamless Engagement</div>
+                <div class="descDiv">Our platform simplifies campaign management and tracks engagement by providing a scalable solution for bulk messaging and notifications across multiple channels.</div>
 
-        <!-- Initial view -->
-        <div id="loginContactDiv" class="login-contact">
-            <div class="tagline heartbeat">
-                <h1>Zap Your Message Instantly – Simplify Bulk Messaging with ZapMsg!</h1>
-            </div>
-            <div class="login-buttons">
-                <a href="#" class="btn-login" onclick="toggleLogin()">Login</a>
-                <a href="#" class="btn-contact">Contact</a>
-            </div>
-        </div>
-
-       <!-- Login form -->
-        <div id="loginDiv" class="login-cls">
-        <div class="loginform">
-            <button class="cancel-btn" onclick="toggleLogin()">&#10005;</button> <!-- Cancel Button -->
-            
-            <form>
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter Username" required />
-
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password" required />
-
-                <button type="submit">Login</button>
-
-                <div class="separator">or</div>
-
-                <!-- Google Login Button with Icon -->
-                <button class="social-login google">
-                    <img src="./src/assets/icons8-google-plus.svg" alt="Google logo" class="social-icon" />
-                    Login with Google
-                </button>
-
-                <!-- GitHub Login Button with Icon -->
-                <button class="social-login github">
-                    <img src="./src/assets/icons8-github.svg" alt="GitHub logo" class="social-icon" />
-                    Login with GitHub
-                </button>
-
-                <!-- Links for Forgot Password and Create Account -->
-                <div class="login-links">
-                    <a href="#" class="create-account">Create New Account</a>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+                <div class="login-buttons">
+                    <a href="./src/html/login.html" class="btn-login" >Login</a>
+                    <a href="./src/html/contact.html" >
+                        <img  class="btn-contact" src="./src/assets/rightArrow.svg" />
+                    </a>
                 </div>
-            </form>
         </div>
-</div>
 
+        <div id="main-img-container" class="main-img-container">
+            <img class="main-img" src="./src/assets/mainImage.svg" alt="">
+        </div>
     </div>
 
+    
     <div id="mainFeatureContainer">
         <div class="features-headline fade-in">
             <h2>Features</h2>
         </div>
-        <div class="features fade-in slide-in">
+        <div class="features slide-in">
             <div class="feature-box">
                 <div class="feature-item">
-                    <img src="https://img.icons8.com/sf-regular/96/iphone.png" alt="Mobile Icon"/>
-                    <div>
+                    <img src="./src/assets/mobileIcon.svg" alt="Mobile Icon"/>
                         <strong>Mobile Integration</strong>
                         <p>Integrate with your iOS/Android app to send notifications to all app users.</p>
-                    </div>
                 </div>
             </div>
             <div class="feature-box">
                 <div class="feature-item">
-                    <img src="https://img.icons8.com/sf-regular/96/secured-letter.png" alt="Email Icon"/>
-                    <div>
+                    <img src="./src/assets/emailIcon.svg" alt="Email Icon"/>
                         <strong>Email Integration</strong>
                         <p>Seamlessly send single or bulk emails directly from the platform.</p>
-                    </div>
                 </div>
             </div>
             <div class="feature-box">
                 <div class="feature-item">
-                    <img src="https://img.icons8.com/sf-regular/96/whatsapp.png" alt="WhatsApp"/>
-                    <div>
+                    <img src="./src/assets/whatsAppIcon.svg" alt="WhatsApp"/>
                         <strong>WhatsApp Messaging</strong>
                         <p>Reach out to your audience via WhatsApp with ease.</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -115,32 +72,24 @@
         <h2>Why Choose ZapMsg?</h2>
         <div class="reasons slide-in">
             <div class="reason">
-                <img src="https://img.icons8.com/sf-regular/96/checked.png" alt="Efficiency Icon"/>
-                <div>
+                <img src="./src/assets/efficientIcon.svg" alt="Efficiency Icon"/>
                     <strong>Efficiency</strong>
                     <p>Instantly reach your audience with bulk messages.</p>
-                </div>
             </div>
             <div class="reason">
-                <img src="https://img.icons8.com/ios/50/multiple-devices.png" alt="multiple-devices"/>
-                <div>
+                <img src="./src/assets/crossPlatformIcon.svg" alt="multiple-devices"/>
                     <strong>Cross-platform Support</strong>
-                    <p>Works seamlessly across Email, WhatsApp, and Mobile Apps.</p>
-                </div>
+                    <p>Works seamlessly across Email, WhatsApp and Mobile Apps.</p>
             </div>
             <div class="reason">
-                <img src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
-                <div>
+                <img src="./src/assets/scaleIcon.svg" alt="combo-chart--v1"/>
                     <strong>Scalable</strong>
                     <p>Suitable for businesses of any size.</p>
-                </div>
             </div>
             <div class="reason">
-                <img src="https://img.icons8.com/sf-regular/96/easy.png" alt="User-friendly Icon"/>
-                <div>
+                <img src="./src/assets/friendlyIcon.svg" alt="User-friendly Icon"/>
                     <strong>User-friendly</strong>
                     <p>Simple, intuitive interface for effortless communication.</p>
-                </div>
             </div>
         </div>
     </div>
@@ -148,49 +97,37 @@
     <div class="footer">
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#">Report</a>
+                <a href="./src/html/contact.html">Report</a>
                 <a href="https://akshaykochale.github.io/Portfolio/" target="_blank">Developer's Portfolio</a>
             </div>
             <div class="contact-info">
-                <a href="#">Akshaykochale78@gmail.com</a>
-                <p>&copy; 2024 ZapMsg. All Rights Reserved.</p>
+                <a href="mailto:akshaykochale78@gmail.com">Akshaykochale78@gmail.com</a>
             </div>
+            <div class="copyright"> &copy; 2024 ZapMsg. All Rights Reserved. </div>
         </div>
     </div>
 
-    <script>
-        function toggleLogin() {
-            const loginDiv = document.getElementById('loginDiv');
-            const loginContactDiv = document.getElementById('loginContactDiv');
 
-            if (loginDiv.style.display === 'none' || loginDiv.style.display === '') {
-                loginDiv.style.display = 'inline';
-                loginContactDiv.style.display = 'none';
-            } else {
-                loginDiv.style.display = 'none';
-                loginContactDiv.style.display = 'flex';
-            }
-        }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Script loaded');
-
-            const elements = document.querySelectorAll('.fade-in, .slide-in');
-
-            function checkVisibility() {
-                const viewportHeight = window.innerHeight;
-                elements.forEach(element => {
-                    const rect = element.getBoundingClientRect();
-                    console.log(rect.top); // Log element top position
-                    if (rect.top < viewportHeight - 50) {
-                        element.classList.add('visible');
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', checkVisibility);
-            checkVisibility(); // Initial check
-        });
-    </script>
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active"); // Add the 'active' class to start the animation
+          }
+        });
+      });
+  
+      // Select all elements you want to observe
+      const fadeInElements = document.querySelectorAll(".fade-in");
+      const slideInElements = document.querySelectorAll(".slide-in");
+  
+      fadeInElements.forEach(el => observer.observe(el));
+      slideInElements.forEach(el => observer.observe(el));
+    });
+  </script>
+  
 </html>

@@ -1,0 +1,96 @@
+/* Center the form vertically and horizontally */
+.main {
+    display: flex;
+    margin-top: 1%;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f5f5f5; 
+    border: 1px solid red;
+}
+
+#image-container
+{
+    position: relative;   
+    width: 50%;
+    height: 50%;
+}
+
+/* Form container styling */
+.contact-form-container {
+    position: relative; /* For the close button to be absolute inside */
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+/* Form heading styling */
+.tagLabel {
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 18px;
+}
+
+/* Form label and input styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input fields */
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Textarea specific styling */
+.textarea {
+    height: 150px;
+    resize: none; /* Disable resize */
+    margin-bottom: 20px;
+}
+
+/* Submit button styling */
+.submitbtn {
+    background-color: #1D1F27;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+/* Cancel button styling: absolute top-right */
+.cancel-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
