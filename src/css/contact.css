@@ -1,39 +1,71 @@
-/* Center the form vertically and horizontally */
+
+.contact-outer
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 90vh;
+}
+
+
+.header {
+    position: relative;
+    display: flex;
+    top: 2vh;
+}
+
+.header-logo {
+    position: relative;
+    width: 1.5vw;
+    height: 1.4vw;
+}
+
+.header-title {
+    font-family: Nunito !important;
+    color: var(--black-color);
+    font-weight: bolder;
+    position: relative;
+    font-size: 1vw;
+}
+
+
 .main {
     display: flex;
-    margin-top: 1%;
     justify-content: space-evenly;
     align-items: center;
     height: 100vh; /* Full viewport height */
-    background-color: #f5f5f5; 
-    border: 1px solid red;
+    background-color: #ffffff; 
 }
 
-#image-container
-{
-    position: relative;   
-    width: 50%;
-    height: 50%;
+#image-container {
+    position: relative;
+    width: 50vw;
+    height: 50vh;
 }
 
 /* Form container styling */
 .contact-form-container {
-    position: relative; /* For the close button to be absolute inside */
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out forwards;
+    position: relative;
+    width: 65%;
+    height: 90%;
+    box-shadow: 0px 1.3vh 4.1vh rgba(0, 0, 0, 0.1);
+    border: 0.1vw solid var(--main-color);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Form heading styling */
 .tagLabel {
-    font-size: x-large;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 18px;
+    position: relative;
+    margin-top: 13vh;
+    font-size: 2vw;
+    font-weight: bolder;
+    color: var(--black-color);
+    margin-bottom: 4vh;
 }
 
 /* Form label and input styling */
@@ -44,7 +76,7 @@ form {
 
 label {
     text-align: left;
-    margin-bottom: 10px;
+    margin-bottom: 1.2vh;
     font-weight: bold;
     color: #333;
 }
@@ -52,45 +84,59 @@ label {
 /* Input fields */
 input[type="email"],
 textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 16px;
+    position: relative;
+    margin-left: 1.3vw;
+    width: 24vw;
+    padding: 1.6vh;
+    margin-bottom: 2.5vh;
+    border: 0.1vw solid #BFBDC2;
+    border-radius: 1vw;
 }
+
+
 
 /* Textarea specific styling */
 .textarea {
-    height: 150px;
+    height: 20vh;
     resize: none; /* Disable resize */
-    margin-bottom: 20px;
+    margin-bottom: 2.5vh;
+    margin-left: 1.3vw;
 }
+
+.input-box::placeholder {
+    font-size: 1vw;
+    color: #97959A;
+    font-family: Raleway;
+}
+
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border: 0.1vw solid #7F4BC1;
+}
+
 
 /* Submit button styling */
 .submitbtn {
-    background-color: #1D1F27;
-    color: white;
+    position: relative;
+    margin-left: 1vw;
+    width: 24vw;
+    padding: 1.6vh;
+    border-radius: 1vw;
+    background-color: #7F4BC1;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    color: var(--main-color);
 }
-
-
 
 /* Cancel button styling: absolute top-right */
 .cancel-btn {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 1vh;
+    right: 1.5vw;
     background: transparent;
     border: none;
-    font-size: 25px;
-    color: #333;
+    font-size: 2vw;
+    color: #7F4BC1;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
 }
-

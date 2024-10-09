@@ -12,55 +12,61 @@
     <script src="../component/Header.js"></script>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    <div id="main-div"> 
+   <div class="login-container">
+    <div class="login-img">
+        login-img
+    </div>
+    <div class="login-outerbox">
+        
+        <div class="login-mainbox">
 
-        <div id="image-container">
-            <img class="loginImg" src="../assets/loginpage.jpg">
-        </div>
-       <div id="loginDiv" class="login-cls">
+            <div class="header">
+                <img  class="header-logo" src="../assets/thunderIcon.svg" alt=""/>
+                <div class="header-title">ZapMsg</div>
+                <button class="cancel-btn" onclick="toggleLogin()">&#10005;</button> 
+            </div>
 
-
-        <div class="loginform">
-            <img width="30" height="30" src="https://img.icons8.com/windows/96/password-window.png" alt="password-window"/>
-            <div class="title">
-                
-                Sign In</div>
-
-            <button class="cancel-btn" onclick="toggleLogin()">&#10005;</button> <!-- Cancel Button -->
-            
-            <form onsubmit="dbLogin(event)">
+            <div class="login-title"> Log In</div>
+            <form onsubmit="dbLogin(event)" class="login-form">
                
-                <input type="text" id="username" placeholder="Enter Username" required />
+                <input type="text" id="username" placeholder="Enter Username" class="input-box" required />
+            </br>
+                <div class="passDiv">
+                <input type="password" id="password" placeholder="Enter Password" class="input-box"  required />
+                 <i class="eye-icon" onclick="togglePasswordVisibility()"> <img src="../assets/eye.svg" alt=""/></i> 
+                </div>
+            </br>
+            <div class="forgot-password">
+                <a href="./contact.html">Forgot Password?</a>
+            </div>
+            </br>
 
-                <input type="password" id="password" placeholder="Enter Password" required />
-
-                <button type="submit">Login</button>
+                <button type="submit" class="submitbtn">Login</button>
 
                 <div class="separator">or</div>
 
-                <!-- Google Login Button with Icon -->
                  <div class="other-login">
                     <button class="social-login google" onclick="login('google')">
-                        <img src="../assets/icons8-google-plus.svg" alt="Google logo" class="social-icon" />
-                    Google
+                        <img src="../assets/googleIcon.svg"/>Google
                     </button>
 
-                    <!-- GitHub Login Button with Icon -->
-                    <button class="social-login github" onclick="login('github')">
-                        <img src="../assets/icons8-github.svg" alt="GitHub logo" class="social-icon" />
-                    GitHub
+                    <button class="social-login" onclick="login('github')">
+                        <img  class="github" src="../assets/githubIcon.svg"/>GitHub
                     </button>
             </div>
-                <!-- Links for Forgot Password and Create Account -->
-                <div class="login-links">
-                    <a href="./register.html" class="create-account">Create New Account</a>
-                    <a href="./contact.html" class="forgot-password">Forgot Password?</a>
-                </div>
+               
             </form>
+
+            <div class="login-link">
+                <p class="acc-suggest">Don't have an account? </p>
+                <a href="./register.html" class="create-account">Create</a>
+            </div>
+
         </div>
+
     </div>
-</div>
+
+   </div>
 
 </body>
 
@@ -70,6 +76,21 @@
     {
         window.location.href="/";
     }
+
+    function togglePasswordVisibility() 
+    {
+    var passwordField = document.getElementById("password");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            passwordField.style.border="1px solid #7F4BC1";
+        } else {
+            passwordField.type = "password";
+            passwordField.style.border="1px solid #97959A";
+        }
+        
+    }
+
 
 </script>
 </html>

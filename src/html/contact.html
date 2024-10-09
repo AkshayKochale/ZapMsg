@@ -11,27 +11,28 @@
     <script src="../component/Header.js"></script>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-
      <div class="main">
         <div id="image-container">
-            <img src="../assets/contact.jpg" alt=""/>
 
         </div>
-    <div class="contact-form-container">
-        <button class="cancel-btn" onclick="toggleLogin()">&#10005;</button> 
-        <img width="30" height="30" src="https://img.icons8.com/ios/50/reply-all.png" alt="reply-all"/>
-        <h2 class="tagLabel">Contact Us</h2>
-        <form id="contactForm">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Your Email" required />
+        <div class="contact-outer">
+                <div class="contact-form-container">
+                <div class="header">
+                    <img  class="header-logo" src="../assets/thunderIcon.svg" alt=""/>
+                    <div class="header-title">ZapMsg</div>
+                </div>
+                <button class="cancel-btn" onclick="toggleLogin()">&#10005;</button> 
+                <h2 class="tagLabel">Contact Us</h2>
+                <form id="contactForm">
+                    <input type="email" id="email" class="input-box" name="email" placeholder="Enter Your Email" required />
 
-            <label for="message">Message:</label>
-            <textarea class="textarea" id="message" name="message" placeholder="Your Message" required></textarea>
+                    <textarea class="textarea input-box" id="message" name="message" placeholder="Enter Your Message" required></textarea>
 
-            <button type="submit" class="submitbtn">Send</button>
-        </form>
-    </div>
+                    <button type="submit" class="submitbtn">Send</button>
+                </form>
+            </div>
+
+        </div> 
 </div>   
 </body>
 

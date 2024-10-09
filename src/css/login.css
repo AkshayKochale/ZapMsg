@@ -1,200 +1,204 @@
-
-:root {
-    --primary-color: #1D1F27; /* Darker, professional primary color */
-    --secondary-color: #B4E0E3;
-    --main-color: #E5E5E5;
-    --accent-color: #eedbd9; 
-    --hover-color: #FF4A3C; 
-    --input-border-color: #A1D6E2; /* Light border color for inputs */
-    --input-focus-border-color: #1D1F27; /* Darker border on focus */
-    --button-bg-color: #465aaa; /* Primary button color */
-    --button-hover-bg-color: #1D1F27; /* Lighter shade on hover */
-    --link-color: #1D1F27; /* Link color */
-}
-
 body {
-    background-color: #F1F1F2; /* Light background color */
-    
+    background-color: #ffffff;
 }
 
-.blankHeader
-{
+.login-container {
     position: relative;
-    width: 100vw;
-    height: 10vh;
-    background-color: var(--primary-color);
-    margin-bottom: 2%;
-}
-
-#main-div
-{
     display: flex;
-    margin-top: 1%;
-    justify-content: space-evenly;
+    width: 100vw;
+    height: 100vh;
 }
 
-#image-container
-{
+.login-img {
     position: relative;
-    width: 50%;
-    height: 100%;
-    /* border: 1px solid black; */
-    
-}
-
-.loginImg
-{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    animation: fadeIn 0.6s ease-in-out forwards;
-}
-
-.login-cls {
-    background-color: #FFFFFF; /* White background for the form */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 30px;
-    width: 400px; /* Fixed width for the form */
+    width: 50vw;
+    height: 100vh;
     text-align: center;
-    position: relative; /* For positioning cancel button */
-    animation: fadeIn 0.6s ease-in-out forwards;
 }
 
-.loginform {
-    margin-top: 20px;
+.login-outerbox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
 }
 
+.login-mainbox {
+    position: relative;
+    width: 65%;
+    height: 90%;
+    box-shadow: 0px 1.3vh 4.1vh rgba(0, 0, 0, 0.1);
+    border: 0.1vw solid var(--main-color);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.header {
+    position: relative;
+    display: flex;
+    top: 2vh;
+}
+
+.header-logo {
+    position: relative;
+    width: 1.5vw;
+    height: 1.4vw;
+}
+
+.header-title {
+    font-family: Nunito !important;
+    color: var(--black-color);
+    font-weight: bolder;
+    position: relative;
+    font-size: 1vw;
+}
+
+.login-title {
+    position: relative;
+    margin-top: 13vh;
+    font-size: 2vw;
+    font-weight: bolder;
+    color: var(--black-color);
+}
+
+.login-form {
+    position: relative;
+    margin-top: 4vh;
+}
 
 input[type="text"],
 input[type="password"] {
-    width: 100%; /* Full width */
-    padding: 10px;
-    border: none; /* Remove all borders */
-    border-bottom: 1px solid var(--primary-color); /* Only bottom border */
-    background-color: transparent; /* Make the background transparent */
-    border-radius: 0; /* Remove border radius */
+    position: relative;
+    margin-left: 1.5vw;
+    width: 24vw;
+    padding: 1.6vh;
+    margin-bottom: 2.5vh;
+    border: 0.1vw solid #BFBDC2;
+    border-radius: 1vw;
+}
 
-    margin-bottom: 15px; /* Space below inputs */
-    transition: border 0.3s; /* Transition for border on focus */
-
+.input-box::placeholder {
+    font-size: 1vw;
+    color: #97959A;
+    font-family: Raleway;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-    outline: none; 
-    border-bottom: 2px solid var(--primary-color); 
+    outline: none;
+    border: 0.1vw solid #7F4BC1;
 }
 
-button[type="submit"],
-button.social-login {
-    background-color: var(--button-bg-color); /* Primary button color */
-    color: #FFFFFF; /* Text color */
-    border: none; /* No border */
-    padding: 10px 15px; 
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor */
-    width: 100%; /* Full width */
-    font-size: 16px; /* Font size */
-    margin: 10px 0; /* Margin */
-    transition: background-color 0.3s; /* Transition for background */
+.forgot-password {
+    position: relative;
+    width: 70%;
+    text-align: right;
+    margin-left: 7vw;
+    margin-top: -6vh;
 }
 
-button[type="submit"]:hover,
-button.social-login:hover {
-    background-color: var(--button-hover-bg-color); 
+.forgot-password a {
+    font-size: 0.8vw;
+    color: #97959A;
+    text-decoration: none;
+}
+
+.submitbtn {
+    position: relative;
+    margin-left: 1.5vw;
+    width: 24vw;
+    padding: 1.6vh;
+    border-radius: 1vw;
+    background-color: #7F4BC1;
+    border: none;
+    color: var(--main-color);
 }
 
 .separator {
-    margin: 5px 0; 
+    margin: 2vh 0;
     font-weight: bold;
-    color: #888888; 
+    color: #C6C2C2;
+    text-align: center;
 }
 
-.social-login {
+
+.other-login {
+    position: relative;
     display: flex;
+    justify-content: space-evenly;
+    gap: 2vw;
+    width: 80%;
+    height: 12%;
+    margin-left: 3vw;
+}
+
+.other-login button {
+    border: 0.1vw solid #7F4BC1;
+    background-color: #ffffff;
+    border-radius: 1.5vw;
+    font-size: 0.9vw;
+    color: #97959A;
+    font-family: Raleway;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    gap: 0.5vw;
     align-items: center;
-    justify-content: center;
-    width: 50%;
-}
-
-.social-icon {
-    width: 20px; /* Icon size */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 8px; /* Space between icon and text */
-}
-
-.login-links {
-    margin-top: 15px; /* Space above links */
-    display: flex;
-    justify-content: center;
-    gap: 4%;
-}
-
-.login-links a 
-{
-    color: var(--link-color); /* Link color */
-    text-decoration: none; /* No underline */
-    font-size: 14px; /* Font size */
-    text-decoration: underline;
-}
-
-
-.login-links a:hover {
-    text-decoration: underline; /* Underline on hover */
-}
-
-.google
-{
-    background-color: #e05043 !important;
-}
-
-.google:hover {
-    background-color: #c33c2d !important;
+    width: 80%;
+    height: 90%;
+    padding: 1vh 1vw;
 }
 
 .github {
-    background-color: #6cc644 !important;
+    position: relative;
+    top: -0.2vh;
 }
 
-.github:hover {
-    background-color: #509432 !important;
+.login-link {
+    position: relative;
+    justify-self: flex-end;
+    margin-top: 7vh;
+    display: flex;
 }
 
+.acc-suggest {
+    font-size: 1vw;
+    color: #97959A;
+    font-family: Raleway;
+}
+
+.create-account {
+    text-decoration: none;
+    font-size: 1vw;
+    margin-left: 0.5vw;
+    color: #7F4BC1;
+}
+
+.passDiv {
+    position: relative;
+    width: 100%;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 1.2vh;
+    right: 1vw;
+    font-size: 1.5vw;
+    opacity: 0.4;
+}
 
 .cancel-btn {
-    background: transparent; /* Transparent background */
-    border: none; /* No border */
-    color: var(--link-color); /* Primary color */
-    font-size: 24px; /* Size of the cancel button */
-    position: absolute; /* Position it at the top right */
-    top: 15px; /* Space from the top */
-    right: 15px; /* Space from the right */
-    cursor: pointer; /* Pointer cursor */
-}
-
-.other-login
-{
-    display: flex;
-    gap: 2%;
-}
-
-label {
-    /* font-weight: bold; */
-    display: block;
-    /* margin: 10px 0 5px;  */
-    text-align: left ;
-}
-
-.title
-{
-    font-weight: bold;
-    font-size: x-large;
-    margin-bottom: 4%;
-}
-
-
-.cancel-btn:hover {
-    transform: rotate(90deg); 
+    position: absolute;
+    top: -1.2vh;
+    right: -12.5vw;
+    background: transparent;
+    border: none;
+    font-size: 2vw;
+    color: #7F4BC1;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
 }

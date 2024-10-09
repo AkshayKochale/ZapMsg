@@ -76,19 +76,6 @@ html {
     background-color: var(--primary-color);
 }
 
-/* Header */
-.header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0.7rem; 
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    
-}
-
 .title-logo {
     font-size: 1.5rem; 
     font-weight: bolder !important;
@@ -102,6 +89,7 @@ html {
     position: relative;
     width: 13%;
 }
+
 
 #logout {
     display: none;

@@ -15,7 +15,6 @@
     <div class="header">
             <img  class="header-logo" src="./src/assets/thunderIcon.svg" alt=""/>
             <div class="header-title">ZapMsg</div>
-        </div>
     </div>
 
     
@@ -26,16 +25,35 @@
                 <div class="descDiv">Our platform simplifies campaign management and tracks engagement by providing a scalable solution for bulk messaging and notifications across multiple channels.</div>
 
                 <div class="login-buttons">
+
                     <a href="./src/html/login.html" class="btn-login" >Login</a>
                     <a href="./src/html/contact.html" >
                         <img  class="btn-contact" src="./src/assets/rightArrow.svg" />
-                    </a>
+                     </a>   
                 </div>
+               
         </div>
 
         <div id="main-img-container" class="main-img-container">
             <img class="main-img" src="./src/assets/mainImage.svg" alt="">
         </div>
+        <svg viewBox="0 0 3387 1270" xmlns="http://www.w3.org/2000/svg" class="light-opacity">
+            <path id="planePath" class="planePath" d="M-266 626c439,4 636,-213 934,-225 755,-31 602,769 1334,658 562,-86 668,-698 266,-908 -401,-210 -893,189 -632,630 260,441 747,121 1051,91 360,-36 889,179 889,159" display="none"/>
+        
+            <!-- Plane with updated color -->
+            <g id="plane" transform="scale(0.5)">
+              <polygon fill="#E9C11C" points="-141,-10 199,0 -198,-72 -188,-61 -171,-57 -184,-57" />
+              <polygon fill="#E9C11C" points="199,0 -141,-10 -163,63 -123,9" />
+              <polygon fill="#E9C11C" points="-95,39 -113,32 -123,9 -163,63 -105,53 -108,45 -87,48 -90,45 -103,41 -94,41" />
+              <path fill="#E9C11C" d="M-87 48l-21 -3 3 8 19 -4 -1 -1zm-26 -16l18 7 -2 -1 32 -7 -29 1 11 -4 -24 -1 -16 -18 10 23zm10 9l13 4 -4 -4 -9 0z"/>
+              <polygon fill="#E9C11C" points="-83,28 -94,32 -65,31 -97,38 -86,49 -67,70 199,0 -123,9 -107,27" />
+            </g>
+        
+            <animateMotion xlink:href="#plane" dur="7s" repeatCount="1" rotate="auto">
+              <mpath xlink:href="#planePath" />
+            </animateMotion>
+            <animate attributeName="opacity" from="1" to="0" begin="6s" dur="0.5s" fill="freeze" />
+          </svg>  
     </div>
 
     
@@ -67,7 +85,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="why-choose-us fade-in">
         <h2>Why Choose ZapMsg?</h2>
         <div class="reasons slide-in">
@@ -116,12 +134,11 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("active"); // Add the 'active' class to start the animation
+            entry.target.classList.add("active"); 
           }
         });
       });
   
-      // Select all elements you want to observe
       const fadeInElements = document.querySelectorAll(".fade-in");
       const slideInElements = document.querySelectorAll(".slide-in");
   
