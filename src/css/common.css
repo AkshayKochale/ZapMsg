@@ -52,6 +52,14 @@ html {
     animation: pulse 2s infinite;
 }
 
+@keyframes rotateRight {
+    from {
+      transform: rotate(0deg); /* Start at 0 degrees */
+    }
+    to {
+      transform: rotate(90deg); /* Rotate 90 degrees to the right */
+    }
+  }
 
 
 
@@ -105,4 +113,11 @@ html {
 
 #logout:hover {
     background-color: var(--hover-color) !important;
+}
+
+
+.cancel-btn:hover
+{
+     animation: rotateRight 0.5s ease-in-out ;
+     transform-origin: center;
 }

@@ -11,47 +11,52 @@
 <body>
     <div class="container">
         <div class="form-content">
+            <div class="header">
+                <img  class="header-logo" src="../assets/thunderIcon.svg" alt=""/>
+                <div class="header-title">ZapMsg</div>
+            </div>
+
             <div class="title-content">
-            <h2>Registration Form</h2>
+            <h2>Register Here</h2>
             <button class="cancel-btn1" onclick="toggleLogin()">&#10005;</button> </div>
             <form id="registerForm">
                 <div class="input-group">
                     <div class="input-half">
                         <label for="firstname">First Name: <span class="required">*</span></label>
-                        <input type="text" id="firstname" name="firstname" required>
+                        <input type="text" id="firstname" name="firstname" required placeholder="Enter Your First Name">
                     </div>
                     <div class="input-half">
                         <label for="lastname">Last Name: <span class="required">*</span></label>
-                        <input type="text" id="lastname" name="lastname" required>
+                        <input type="text" id="lastname" name="lastname" required placeholder="Enter Your Last Name">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-full">
                         <label for="username">Username: <span class="required">*</span></label>
-                        <input type="text" id="username" name="username" required>
+                        <input type="text" id="username" name="username" required placeholder="Enter Your Username">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-full">
                         <label for="email">Email: <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required placeholder="Enter Your Email">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-half">
                         <label for="password">Password: <span class="required">*</span></label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" required placeholder="Enter Your Password">
                     </div>
                     <div class="input-half">
                         <label for="confirm-password">Confirm Password: <span class="required">*</span></label>
-                        <input type="password" id="confirm-password" name="confirm-password" required>
+                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Your Password">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-half">
-                        <label for="country">Country: <span class="required">*</span></label>
-                        <select id="country" name="country" required>
-                            <option value="" disabled selected>Select your country</option>
+                        <label for="country">Country: <span class="required" >*</span></label>
+                        <select id="country" name="country" required class="selectBox">
+                            <option value="" disabled selected><div class="placeholder">Select your country</div></option>
                             <option value="USA">USA</option>
                             <option value="Canada">Canada</option>
                             <option value="UK">UK</option>
@@ -65,11 +70,11 @@
                         </select>
                     </div>
                     <div class="input-half">
-                        <label for="phone">Phone Number: <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">Contact Number: <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter Your Contact Number">
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">Register</button>
+                <button type="submit" class="submit-btn">Submit</button>
             </form>
         </div>
     </div>

@@ -4,7 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
     height: 100vh;
+    background-color: #FFFFFF;
 }
 
 .form-content {
@@ -12,14 +14,38 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 650px;
     position: relative;
+    width: 50%;
+    height: 95%;
+}
+
+
+.header {
+    position: relative;
+    display: flex;
+    left:45%;
+}
+
+.header-logo {
+    position: relative;
+    width: 1.5vw;
+    height: 1.4vw;
+}
+
+.header-title {
+    font-family: Nunito !important;
+    color: var(--black-color);
+    font-weight: bolder;
+    position: relative;
+    font-size: 1vw;
 }
 
 h2 {
     text-align: center;
-    color: var(--secondary-color); /* Dark purple */
-    margin-bottom: 20px;
+    color: var(--black-color); 
+    margin-bottom: 4vh;
+    margin-top: 4vh;
+    font-size: 2vw;
 }
 
 .input-group {
@@ -43,10 +69,25 @@ h2 {
     margin-right: 2%
 }
 
+input::placeholder  {
+    font-size: 1vw;
+    color: #97959A;
+    font-family: Raleway;
+}
+
+.selectBox option
+{
+    font-size: 1vw;
+    color: #787280;
+    font-family: Raleway;
+}
+
 label {
     display: block;
-    margin-bottom: 5px;
-    color: #333;
+    margin-bottom: 10px;
+    color: var(--black-color);
+    font-weight: 500;
+    font-size: small;
 }
 
 input[type="text"],
@@ -56,25 +97,35 @@ input[type="password"],
 select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #BFBDC2;
     font-size: 14px;
+    border-radius: 0.8vw;
+}
+
+input:focus,
+select:focus 
+{
+    outline: none;
+    border: 1px solid  #7B68EE;
 }
 
 .submit-btn {
-    width: 100%;
-    background-color: var(--secondary-color);; 
+    width: 24vw;
+    background-color: #7F4BC1; 
     color: white;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1.6vh;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin-left: 25%;
+    
+
 }
 
 .submit-btn:hover {
-    background-color: #7B68EE; 
+    background-color: #c1b9ee; 
 }
 
 .required {
@@ -85,10 +136,21 @@ select {
 .cancel-btn1 {
     background: transparent; /* Transparent background */
     border: none; /* No border */
-    color: var(--link-color); 
-    font-size: 22px; 
+    color: #7F4BC1; 
+    font-size: 2vw; 
     position: absolute; 
-    top: 15px; /* Space from the top */
-    right: 20px; /* Space from the right */
+    top: 16px; /* Space from the top */
+    right: 21px; /* Space from the right */
     cursor: pointer; /* Pointer cursor */
+}
+
+.cancel-btn1:hover
+{
+     animation: rotateRight 0.5s ease-in-out ;
+     transform-origin: center;
+}
+
+.selectBox{
+    padding: 9px;
+
 }
