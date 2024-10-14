@@ -10,9 +10,7 @@
     <script src="../component/Header.js"></script>
 </head>
 <body>
-    
-    
-    <div id="header-placeholder"></div>
+   
     <div class="dashboard-container">
         <div class="tabs">
 
@@ -36,9 +34,12 @@
             <button class="tab-btn" onclick="changeContent('Settings')">
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Settings" class="tab-icon"> Settings
             </button>
+            <button class="tab-btn" onclick="changeContent('logout')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Settings" class="tab-icon"> Log Out
+            </button>
         </div>
-        <div class="content" id="content">
-            Click a tab to see the content.
+        <div class="content" id="content" >
+            <img class="dashboardImg" src="../assets/dahsboard.svg"> </img>
         </div>
     </div>
 

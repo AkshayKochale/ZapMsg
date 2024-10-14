@@ -15,7 +15,16 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-function changeContent(tabName) {
+function changeContent(tabName) 
+{
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = `You clicked on: ${tabName}`;
+
+    if(tabName=='none')
+    {
+        contentDiv.innerHTML='';
+    }
+    else 
+    {
+        contentDiv.innerHTML = `You clicked on: ${tabName}`;
+    }
 }
