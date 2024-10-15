@@ -11,31 +11,38 @@
 </head>
 <body>
    
+   <img class="collapseIcon" id="collapseIcon" src="../assets/collapsIcon.svg"  onclick="minimize()"/>
     <div class="dashboard-container">
-        <div class="tabs">
+       
+        <div class="tabs" id="tabs">
 
-            <button class="tab-btn" onclick="changeContent('Clients')">
-                <img src="https://img.icons8.com/windows/96/FFFFFF/group-foreground-selected.png" class="tab-icon"
+        <div class="header">
+        
+            <img  class="header-logo" src="../assets/thunderIcon.svg" alt=""/>
+            <div class="header-title changeOnCollapse">ZapMsg</div>
+        </div>
+            <button class="tab-btn changeOnCollapse" onclick="changeContent('Clients')">
+                <img src="../assets/users.svg" class="tab-icon"
                  alt="group-foreground-selected"/> Clients
             </button>
-            <button class="tab-btn" onclick="changeContent('In-App Message')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/inbox.png" alt="In-App Message" class="tab-icon"> In-App Message
+            <button class="tab-btn changeOnCollapse" onclick="changeContent('In-App Message')">
+                <img src="../assets/inapp.svg" alt="In-App Message" class="tab-icon"> In-App Message
             </button>
-            <button class="tab-btn" onclick="changeContent('Email')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/email.png" alt="Email" class="tab-icon"> Email
+            <button class="tab-btn changeOnCollapse" onclick="changeContent('Email')">
+                <img src="../assets/email.svg" alt="Email" class="tab-icon"> Email
             </button>
-            <button class="tab-btn" onclick="changeContent('WhatsApp')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp" class="tab-icon"> WhatsApp
+            <button class="tab-btn changeOnCollapse" onclick="changeContent('WhatsApp')">
+                <img src="../assets/whatsapp.svg" alt="WhatsApp" class="tab-icon"> WhatsApp
             </button>
             <div class="spacer"></div> <!-- Spacer for better alignment -->
-            <button class="tab-btn" onclick="changeContent('History')">
-                <img src="https://img.icons8.com/ios-filled/50/FFFFFF/activity-history.png" alt="History" class="tab-icon"> History
+            <button class="tab-btn changeOnCollapse" onclick="changeContent('History')">
+                <img src="../assets/history.svg" alt="History" class="tab-icon"> History
             </button>
-            <button class="tab-btn" onclick="changeContent('Settings')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Settings" class="tab-icon"> Settings
+            <button class="tab-btn changeOnCollapse" onclick="changeContent('Settings')">
+                <img src="../assets/setting.svg" alt="Settings" class="tab-icon"> Settings
             </button>
-            <button class="tab-btn" onclick="changeContent('logout')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Settings" class="tab-icon"> Log Out
+            <button class="tab-btn changeOnCollapse" onclick="changeContent('logout')">
+                <img src="../assets/logout.svg" alt="Settings" class="tab-icon"> Log Out
             </button>
         </div>
         <div class="content" id="content" >

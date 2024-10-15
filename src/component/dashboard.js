@@ -28,3 +28,43 @@ function changeContent(tabName)
         contentDiv.innerHTML = `You clicked on: ${tabName}`;
     }
 }
+
+let prevCondition=1;
+
+function minimize()
+{
+    var buttons =document.getElementsByClassName("changeOnCollapse");
+    console.log("mini clicked !!")
+
+
+    // remove text from all buttons
+    for(var i=0;i<buttons.length;i++)
+    {
+        var btn =buttons[i];
+        if(prevCondition==1)
+            btn.classList.add("isTextVisible");
+        else
+            btn.classList.remove("isTextVisible");
+
+    }
+
+    // reduce size of tabs
+        var tabs=document.getElementById("tabs");
+        var collapseIcon=document.getElementById("collapseIcon");
+
+        if(prevCondition==1)     
+        {    tabs.style.width="5%"
+            collapseIcon.style.left="5%"    
+            collapseIcon.style.transform="rotate(180deg)";
+        }
+        else
+        {
+            tabs.style.width="20%";
+            collapseIcon.style.left="19.5%"
+            collapseIcon.style.transform="none";
+        }
+
+
+    
+    prevCondition=prevCondition==1?0:1;
+}
