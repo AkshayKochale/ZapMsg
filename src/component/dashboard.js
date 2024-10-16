@@ -77,6 +77,10 @@ function minimize()
 }
 
 let content =document.getElementById("content");
+let tabs =document.getElementById("tabs");
+let collapseIcon =document.getElementById("collapseIcon");
+
+
 
 const rowsPerPage = 10; 
 let currentPage = 10;
@@ -199,7 +203,11 @@ function showAddContent()
 {
     var addClient= document.getElementById("clientDiv");
     addClient.style.display="block";
-    
+    openTab('manual');
+
+    content.classList.add("blur");
+    tabs.classList.add("blur");
+    collapseIcon.classList.add("blur");
 }
 
 function openTab(tabName) 
@@ -238,7 +246,7 @@ function openTab(tabName)
        }
     }
     
-    openTab('manual');
+    
 
     function  openFileSystem()
     {
@@ -262,10 +270,14 @@ function openTab(tabName)
     document.getElementById('clientphone').value = '';
 
         const fileInput = document.getElementById('fileInput');
-     fileInput.value = '';
+        fileInput.value = '';
+
+        document.getElementById("fileSelectedLabel").innerText="";  
 
      document.getElementById("clientDiv").style.display='none';
-
+     content.classList.remove("blur");
+     tabs.classList.remove("blur");
+     collapseIcon.classList.remove("blur");
     }
 
 

@@ -327,7 +327,7 @@
     width: 28vw;
     height: 85vh;
     top: 10%;
-    left: 30%;
+    left: 35%;
     border: 1px solid #7F4BC1;
     border-radius: 25px;
   }
@@ -490,3 +490,7 @@
     text-align: center;
 }
 
+.blur {
+    filter: blur(10px); 
+    pointer-events: none;
+}
