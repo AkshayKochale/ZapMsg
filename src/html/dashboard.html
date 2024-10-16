@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZapMsg Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="../component/Header.js"></script>
+    <link rel="icon" href="../assets/thunderIcon.svg" alt="lightning-bolt"/>
 </head>
 <body>
    
    <img class="collapseIcon" id="collapseIcon" src="../assets/collapsIcon.svg"  onclick="minimize()"/>
     <div class="dashboard-container">
-       
+        
         <div class="tabs" id="tabs">
 
         <div class="header">
@@ -47,6 +48,48 @@
         </div>
         <div class="content" id="content" >
             <img class="dashboardImg" src="../assets/dahsboard.svg"> </img>
+         
+        </div>
+
+        <div class="addClient" id="clientDiv" style="display: none;">
+            <div class="clientHeader">
+            <img  class="addclientLogo" src="../assets/thunderIcon.svg" alt=""/>
+            <div class="addClienttitlemsg">ZapMsg</div>
+            <button class="cancel-btn" onclick="loadDashboard()">&#10005;</button> 
+        </div>
+
+               <h3 class="title-add"> Add Client</h3>
+            <div class="tab-buttons1 tab-buttons">
+                <button class="tab-btn1 tab-btn" id="manualBtn" onclick="openTab('manual')">Manual</button>
+                <button class="tab-btn1 tab-btn" id="uploadBtn" onclick="openTab('upload')">Upload</button>
+            </div>
+        
+            <!-- Tab Content -->
+            <div id="manual" class="tab-content1">
+                    
+                    <input type="text" id="clientname" name="clientname" placeholder="Enter client name" />
+            
+                  
+                    <input type="email" id="clientemail" name="clientemail" placeholder="Enter email" />
+            
+                  
+                    <input type="text" id="clientphone" name="clientphone" placeholder="Enter phone number" />
+            
+                  
+                    <input type="radio" id="bot" name="clienttype" value="Bot" />
+                    <label for="bot">Bot</label>
+                    <input type="radio" id="real" name="clienttype" value="Real" />
+                    <label for="real">Real</label><br>
+                    <button class="addBtnClick tab-btn"> Add </button>
+            </div>
+        
+            <div id="upload" class="tab-content1" style="display:none;">
+                <button class="download-btn tab-btn">Demo Excel</button>
+                <button class="download-btn tab-btn" onclick="openFileSystem()">Choose File</button>
+                <input type="file" id="fileInput" name="file" accept=".xls, .xlsx" style="display: none;" />
+                </br> 
+                <label class="fileSelectedLabel"></label>
+            </div>
         </div>
     </div>
 
