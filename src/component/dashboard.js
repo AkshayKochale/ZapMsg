@@ -156,6 +156,9 @@ function  displayEmailTab()
                         oninput="filterTable(event)"/>
                    <Button class="addBtn" title="Add Client" onclick="showAddContent(event)"> +  </Button></div><div id="table_div"></div>` ;
 
+    let emailcontent = document.getElementById('emailcontent');
+    emailcontent.style.display="none";
+                   
     var temp=
         [
             { "clientname":"Akshay Kochale","clientemail":"akshaykochale78@gmail.com","clientphone":"1291929129129","isactive":"true","clienttype":"Bot"},
@@ -234,7 +237,7 @@ function openTab(tabName)
        var manualBtn= document.getElementById("manualBtn");
        var uploadBtn= document.getElementById("uploadBtn"); 
 
-       if(tabName=="manual")
+       if(tabName!="manual")
        {
           uploadBtn.classList.remove("active");
           manualBtn.classList.add("active");

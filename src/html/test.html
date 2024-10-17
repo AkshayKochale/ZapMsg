@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/lightfair.min.css">
+</head>
+<body>
+
+    <pre>
+        <code class="language-java">
+          class Animal(val name: String, val age: Int) {
+            fun speak() {
+                println("$name is speaking.")
+            }
+        }
+
+        fun printNumbers() {
+            for (i in 1..5) {
+                println("Number: $i")
+            }
+        }
+
+        fun getGreeting(name: String): String {
+            return "Hello, $name!"
+        }
+
+        fun main() {
+            val dog = Animal("Rex", 5)
+            dog.speak()
+
+            val greeting = getGreeting("Alice")
+            println(greeting)
+
+            printNumbers()
+
+            val colors = listOf("Red", "Blue", "Green")
+            for (color in colors) {
+                println("Color: $color")
+            }
+
+            var count = 0
+            
+            val numbers = (1..10).toList()
+            val evenNumbers = numbers.filter { it % 2 == 0 }
+            println("Even numbers: $evenNumbers")
+        } 
+        </code>
+</pre>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>  
+</body>
+</html>

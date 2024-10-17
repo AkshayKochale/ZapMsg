@@ -1,0 +1,92 @@
+/* Container for the email editor */
+.emailcontent
+{
+    flex: 1;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
+
+.mail-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0 !important;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Dropdown and inputs styling */
+.email-select,
+.mail-input {
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Quill editor styling */
+#editor-container {
+    margin-bottom: 10px;
+}
+
+#editor {
+    height: 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#toolbar
+{
+    display:  none;
+}
+
+.dropzone-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.preview-div
+{
+    border: 1px solid red;
+    width: 30%;
+    padding: 5px !important;
+    text-align: center;
+}
+
+.dropzone {
+    background-color: #f9f9f9;
+    position: relative;
+    width: 30%;
+    min-height: 0;
+    padding: 5px !important;
+}
+
+/* Send button styling */
+.send-btn {
+    width: 100%;
+    background-color: #7F4BC1;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background-color: #693AA9;
+}
+

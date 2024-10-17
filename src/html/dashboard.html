@@ -6,11 +6,19 @@
     <title>ZapMsg Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/dashboard.css" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <link rel="icon" href="../assets/thunderIcon.svg" alt="lightning-bolt"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css">
+     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+     <link rel="stylesheet" href="../css/common.css" />
+     <link rel="stylesheet" href="../css/dashboard.css" />
+     <link rel="stylesheet" href="../css/inapp.css" />
+     <link rel="stylesheet" href="../css/emailTab.css" />
 </head>
-<body>
+<body >
    
    <img class="collapseIcon" id="collapseIcon" src="../assets/collapsIcon.svg"  onclick="minimize()"/>
     <div class="dashboard-container">
@@ -26,10 +34,10 @@
                 <img src="../assets/users.svg" class="tab-icon"
                  alt="group-foreground-selected"/> Clients
             </button>
-            <button class="tab-btn changeOnCollapse" onclick="changeContent('In-App Message')">
+            <button class="tab-btn changeOnCollapse" onclick="showInappTab()">
                 <img src="../assets/inapp.svg" alt="In-App Message" class="tab-icon"> In-App Message
             </button>
-            <button class="tab-btn changeOnCollapse" onclick="changeContent('Email')">
+            <button class="tab-btn changeOnCollapse" onclick="showEmailtab('Email')">
                 <img src="../assets/email.svg" alt="Email" class="tab-icon"> Email
             </button>
             <button class="tab-btn changeOnCollapse" onclick="changeContent('WhatsApp')">
@@ -50,6 +58,10 @@
             <img class="dashboardImg" src="../assets/dahsboard.svg"> </img>
          
         </div>
+        <div class="emailcontent" id="emailcontent" style="display: none;">
+            
+        </div>
+
 
         <div class="addClient" id="clientDiv" style="display: none;">
             <div class="clientHeader">
@@ -95,5 +107,19 @@
     </div>
 
     <script src="../component/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="../component/inapp.js"></script>
+    <script type="text/javascript" src="../component/emailvisual.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.js"></script>
+    <script src="https://unpkg.com/quill-emoji/dist/quill-emoji.js"></script>
+
+    <script>
+   
+        hljs.highlightAll();
+        
+    </script>
 </body>
 </html>
