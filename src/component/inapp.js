@@ -1,5 +1,6 @@
 
-function inappOpenTab(tabName) {
+function inappOpenTab(tabName) 
+{
     var i, tabContent, tabs;
 
     // Hide all tab content
@@ -42,14 +43,10 @@ function openLanguageTab(tabName) {
 
 function showInappTab() 
 {
-    let contentDiv = document.getElementById('content');
-    contentDiv.style.display="flex";
-
-    let emailcontent = document.getElementById('emailcontent');
-    emailcontent.style.display="none";
+    changeMainTab("inappcontent");
 
     hljs.highlightAll();
-
+    let contentDiv=document.getElementById("inappcontent");
     contentDiv.innerHTML = `
         <div class="inapp-tab-container">
             <div class="inapp-tabs">

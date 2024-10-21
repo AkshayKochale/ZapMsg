@@ -1,7 +1,6 @@
 function showEmailtab()
 {
-    let contentDiv = document.getElementById('content');
-    contentDiv.style.display="none";
+    changeMainTab("emailcontent");
 
     let emailcontent = document.getElementById('emailcontent');
     emailcontent.style.display="block";
@@ -52,20 +51,35 @@ function showEmailtab()
     var quill = new Quill('#editor', {
         modules: {
             toolbar: [
-                ['bold', 'italic', 'underline'],
-                ['link', 'emoji'],
-            ],
+                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                ['blockquote', 'code-block'],
+                [ 'emoji','image', 'video', 'formula'],
+              
+                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                [{ 'direction': 'rtl' }],                         // text direction
+              
+                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+              
+                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                [{ 'font': [] }],
+                [{ 'align': [] }],
+              
+                ['clean']                                         // remove formatting button
+              ],
             'emoji-toolbar': true,
         },
         placeholder: 'Compose your email...',
         theme: 'snow'
     });
 
-    // Initialize Dropzone for file attachments
     Dropzone.autoDiscover = false;
     var dropzone = new Dropzone("#fileDropzone", {
         url: "/file-upload",
-        maxFilesize: 2, // Set maximum file size to 2MB
+        maxFilesize: 2, 
         addRemoveLinks: true,
         acceptedFiles: "image/*,application/pdf"
     });
