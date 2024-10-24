@@ -50,23 +50,24 @@ function showInappTab()
     contentDiv.innerHTML = `
         <div class="inapp-tab-container">
             <div class="inapp-tabs">
+                <div class="title-inapp">In-App Message</div>
                 <button class="inapp-tab inapp-active" onclick="inappOpenTab('inapp-notify')">Notify</button>
                 <button class="inapp-tab" onclick="inappOpenTab('inapp-configure')">Configure</button>
             </div>
 
             <div id="inapp-notify" class="inapp-tab-content">
                <div class="notification-form">
-               <select id="emailDropdown" multiple>
-                <option value="email1@example.com">email1@example.com</option>
+               <select class="notifyOptions" id="emailDropdown" multiple>
+                <option value="email1@example.com">akshayK@example.com</option>
                 <option value="email2@example.com">email2@example.com</option>
                 <option value="email3@example.com">email3@example.com</option>
                 <option value="email4@example.com">email4@example.com</option>
-            </select>
+                 </select>
 
 
-                <input type="text" placeholder="Enter notification title" />
-                <input type="text" placeholder="Enter notification message" />
-                <button> Send </button>
+                <input type="text"  placeholder="Enter notification title" />
+                <textarea  class="bigText" placeholder="Enter notification message" ></textarea>
+                <button class="sendNotificationBtn"> Send </button>
             </div>
             </div>
 

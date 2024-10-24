@@ -2,11 +2,43 @@
 .clientcontent
 {
     flex: 1;
-    background-color: #f9f9f9;
+    background-color: #eeeef6;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2%;
+}
+.title-client
+{
+    position: relative;
+    font-weight: bold;
+    font-size: larger;
+    margin-right: 70%;
+}
+
+
+.status-active ,.status-inactive
+{
+    position: relative;
+    background-color: none;
+    border-radius: 12px;
+    padding: 0.3% 10%;
+    font-size: x-small;
+    font-weight: 500;
+}
+
+.status-active 
+{
+    border: 1px solid white;
+    background-color:#ebf6eb;
+    color: #31aa27;
+}
+
+.status-inactive 
+{
+    border: 1px solid white;
+    background-color:#FFF0F0;
+    color: #f93232;
 }

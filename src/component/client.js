@@ -2,7 +2,9 @@ function  showClient()
 {
     changeMainTab("clientcontent");
     let content=document.getElementById("clientcontent");
-  content.innerHTML=`<div class="searchDiv"><input class="searchText" type="text" placeholder="search"
+  content.innerHTML=`<div class="searchDiv">
+    <div class="title-client">Clients</div>
+    <input class="searchText" type="text" placeholder="search"
     oninput="filterTable(event)"/>
     <Button class="addBtn" title="Add Client" onclick="showAddContent(event)"> +  </Button></div><div id="table_div"></div>` ;
 
@@ -23,36 +25,38 @@ function getData()
 {
     var data = new google.visualization.DataTable();
         
-    data.addColumn('string', 'Client Name');
+    data.addColumn('string', 'Username');
     data.addColumn('string', 'Email');
     data.addColumn('string', 'Phone');
-    data.addColumn('boolean', 'Is Active');
+    data.addColumn({ type: 'string', label: 'Status', p: { html: true } });
     data.addColumn('string', 'Client Type');
 
+   
     data.addRows([
-        ['Akshay Kochale', 'akshaykochale78@gmail.com', '<a href="#">1291929129129</a>', true, 'Bot'],
-        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', false, 'Bot'],
-        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', true, 'Real'],
-        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', true, 'Bot'],
-        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', false, 'Bot'],
-        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', true, 'Real'],
-        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', true, 'Bot'],
-        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', false, 'Bot'],
-        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', true, 'Real'],
-        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', true, 'Bot'],
-        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', false, 'Bot'],
-        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', true, 'Real'],
-        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', true, 'Bot'],
-        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', false, 'Bot'],
-        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', true, 'Real'],
-        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', true, 'Bot'],
-        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', false, 'Bot'],
-        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', true, 'Real'],
-        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', true, 'Bot'],
-        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', false, 'Bot'],
-        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', true, 'Real']
+        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
+        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
+        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
+        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
+        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
+        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
+        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
+        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
+        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
+        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
+        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
+        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
+        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
+        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
+        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
+        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
+        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
+        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
+        ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
+        ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
+        ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real']
       ]);
-    
+      
+
       return data;
 }
 
@@ -92,7 +96,7 @@ function filterTable(event)
     filteredData.addColumn('string', 'Client Name');
     filteredData.addColumn('string', 'Email');
     filteredData.addColumn('string', 'Phone');
-    filteredData.addColumn('boolean', 'Is Active');
+    filteredData.addColumn({ type: 'string', label: 'Status', p: { html: true } });
     filteredData.addColumn('string', 'Client Type');
     
     var data=getData();
@@ -105,7 +109,7 @@ function filterTable(event)
         
         if (name.includes(searchTerm) || email.includes(searchTerm) || phone.includes(searchTerm)) {
             filteredData.addRow([data.getValue(i, 0), data.getValue(i, 1),
-                 data.getValue(i, 2),data.getValue(i, 3),data.getValue(i, 4)]);
+                 data.getValue(i, 2),   data.getValue(i, 3),data.getValue(i, 4)]);
         }
     }
 

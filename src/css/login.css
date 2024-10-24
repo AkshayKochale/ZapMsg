@@ -91,7 +91,8 @@ input[type="password"] {
     border-radius: 1vw;
 }
 
-.input-box::placeholder {
+.input-box::placeholder 
+{
     font-size: 1vw;
     color: #97959A;
     font-family: Raleway;
