@@ -2,19 +2,17 @@ function showEmailtab()
 {
     changeMainTab("emailcontent");
 
+    let selectBox=createDropDown(["goku","akshay","vegeta","goku","akshay","vegeta","goku","akshay","vegeta"]
+                                    ,"emailSelectBox")
+      
+
     let emailcontent = document.getElementById('emailcontent');
     emailcontent.style.display="block";
     emailcontent.innerHTML=  `
+            <div class="title-mail">Email</div> 
             <div class="mail-container">
             <div class="mail-fields">
-                
-                <select id="emailDropdown1" multiple class="email-select">
-                    <option value="email1@example.com">email1@example.com</option>
-                    <option value="email2@example.com">email2@example.com</option>
-                    <option value="email3@example.com">email3@example.com</option>
-                    <option value="email4@example.com">email4@example.com</option>
-                </select>
-
+            `+ selectBox+`
                 <input type="text" class="mail-input" placeholder="Enter Subject" />
 
                 
@@ -32,21 +30,16 @@ function showEmailtab()
                 
                 <div class="dropzone-container">
                     <form action="/file-upload" class="dropzone" id="fileDropzone"></form>
-                    <div class="preview-div"> Preview</div>
-                     <div class="preview-div"> Complete with AI</div>
+                    <label class="dropfilestxt">Drop files here</label>
+                    <div class="preview-div utilDiv"> Preview</div>
+                    <div class="ai-div utilDiv"> Complete with AI</div>
                 </div>
 
                 <button class="send-btn">Send</button>
             </div>
         </div>
     `
-    const emailDropdown = new Choices('#emailDropdown1', {
-        removeItemButton: true,
-        searchEnabled: false,
-        placeholder: true,
-        placeholderValue: 'Select email IDs',
-    });
-
+    MultiselectDropdown(window.MultiselectDropdownOptions);
     // Initialize Quill rich text editor
     var quill = new Quill('#editor', {
         modules: {

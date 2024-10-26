@@ -8,10 +8,8 @@
     align-items: center;
     justify-content: center;
     gap: 2%;
-    border-top-right-radius: 0px;
-    
+    border-top-right-radius: 0px;    
 }
-
 
 .inapp-tab-container {
     display: flex;
@@ -21,8 +19,6 @@
     height: 100%;
     border-radius: 20px !important;
 }
-
-
 
 .inapp-tabs {
     display: flex;
@@ -51,6 +47,7 @@
     font-size: 15px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    background-color: #eeeef6;
    
 }
 
@@ -68,7 +65,6 @@
     border-radius: 25px;
     background-color: #FFFFFF;
     border-top-right-radius: 0px;
-
 }
 
 .inapp-tab-content:not(.inapp-active) {
@@ -79,45 +75,105 @@
 .language-tabs-container {
     display: flex;
     flex-direction: column;
+    margin-top: 3%;
+    margin-left: 2%;
    
 }
 
 .language-tabs {
     display: flex;
-    gap: 10px; /* Space between tabs */
+    gap: 10px; 
     padding: 10px;
 }
 
 .language-tab {
-    padding: 10px 20px;
-    background-color: #7F4BC1; /* Background color for tabs */
-    color: white;
-    border: none;
+    padding: 6px 15px;
+    color: #7F4BC1;
+    border: 1px solid #7F4BC1;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: Raleway;  
+    background-color: #FFFFFF;
+    border-radius: 12px;
 }
 
 .language-tab:hover {
     background-color: #5F3AA1; /* Darker color on hover */
+    color: #FFFFFF;
 }
 
 .language-tab.active {
-    background-color: #5F3AA1; /* Active tab color */
+    background-color: #5F3AA1; /* Darker color on hover */
+    color: #FFFFFF;
+    font-weight: 400;
 }
 
 .tab-content 
 {
     position: relative;
-    padding: 20px;
-    border: 1px solid #ddd;
-    margin-top: 10px;
     background-color: #f9f9f9;
     height: 100%;
 }
 
 
+.code-block {
+    position: relative;
+    max-height: 380px;
+    overflow-y: auto; 
+    overflow-x: auto; 
+    background: #f9f9f9; 
+    border: 2px solid #eeeef6;
+    margin-right: 2%;
+    font-family: monospace; 
+    scroll-behavior: smooth;
+}
 
-/* Custom Highlight.js theme for your color scheme */
+*::-webkit-scrollbar {
+    width: 18px; 
+ }
+ 
+ *::-webkit-scrollbar-thumb {
+    background-color: #7F4BC1; 
+    border-radius: 8px; 
+    border: 5px solid #E6E6FA; 
+ }
+ 
+*::-webkit-scrollbar-track {
+    background-color: #E6E6FA; 
+ }
+
+ 
+ input[type="checkbox"]:checked {
+    -webkit-appearance: none; 
+    background-color: #7F4BC1; 
+    border-color: #7F4BC1;
+    color: #FFFFFF;
+ }
+ 
+ input[type="checkbox"]:checked::after {
+    content: "✔";
+    position: relative;
+    top:-3px;
+    left: 2px;
+ }
+
+
+
+.copyBtn
+{
+    position: absolute;
+    top: 18%;
+    right: 5%;
+    z-index: 100;
+    width: 6vw;
+    padding: 0.5vh;
+    border-radius: 1vw;
+    background-color: #FFFFFF;
+    border: 1px solid #7F4BC1;
+    color: #7F4BC1
+    
+}
+
 .hljs {
     background: #FFFFFF; /* Background color */
     color: #333333; /* Default text color */
@@ -131,69 +187,55 @@
 .hljs-literal,
 .hljs-title,
 .hljs-section {
-    color: #7F4BC1; /* Your main color */
+    color: #7F4BC1; 
     font-weight: bold;
 }
 
 .hljs-string,
 .hljs-title.class_,
 .hljs-title.class_.inherited {
-    color: #7a2be1; /* Orange accent color for strings */
+    color: #7a2be1; 
 }
 
 .hljs-number {
-    color: #D35400; /* Dark orange color for numbers */
+    color: #D35400; 
 }
 
 .hljs-symbol {
-    color: #27ae60; /* Green color for symbols */
+    color: #27ae60; 
 }
 
 .hljs-comment,
 .hljs-quote {
-    color: #888888; /* Gray for comments */
-    font-style: italic; /* Italics for comments */
+    color: #888888;
+    font-style: italic; 
 }
 
 .hljs-function,
 .hljs-function .hljs-title {
-    color: #2980b9; /* Blue for functions */
+    color: #2980b9; 
 }
 
 .hljs-method {
-    color: #7F4BC1; /* Method name color (same as main color) */
+    color: #7F4BC1; 
 }
 
 .hljs-variable,
 .hljs-template-variable {
-    color: #8e44ad; /* Purple color for variables */
+    color: #8e44ad; 
 }
 
 .hljs-params {
-    color: #c0392b; /* Red color for parameters */
+    color: #c0392b; 
 }
 
 .hljs-attribute {
-    color: #f39c12; /* Gold color for attributes */
+    color: #f39c12; 
 }
 
 .hljs-doctag {
-    color: #9b59b6; /* Purple for doc tags */
+    color: #9b59b6; 
 }
-
-
-.code-block {
-    position: relative;
-    max-height: 320px;
-    overflow-y: auto; 
-    overflow-x: auto; 
-    background: #f9f9f9; 
-    padding: 10px; 
-    border-radius: 4px; 
-    font-family: monospace; 
-}
-
-
 
 .notification-form {
     position: relative;
@@ -203,12 +245,11 @@
     height: 60%;
     border-radius: 10px;
     padding: 2%;
-    /* background-color: #FFFFFF; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #7F4BC1;
+    border: 2px solid #eeeef6;
 
 }
 
@@ -219,40 +260,29 @@
     font-family: Raleway;
 }
 
-
-
-.choices__input--cloned
+.notification-form input[type="text"] 
 {
-    /* position: absolute; */
-    /* min-width: 80%; */
-    min-width: 45ch !important;
-    max-width:45ch !important;
-    min-height: fit-content;
-    max-height: max-content;
-    overflow: scroll;
-}
-
-
-.notification-form input[type="text"] {
     position: relative;
-    width: 80%;
+    width: 100%;
     padding: 1.6vh;
-    margin-bottom: 2.5vh;
+    margin-bottom: 1.2%;
     border: 0.1vw solid #BFBDC2;
     border-radius: 1vw;
     
 }
 
 
-
-.choices__list--multiple .choices__item
+.inappSelectBox
 {
-    background-color: #7F4BC1 !important;
+    position: relative;
+    width: 84% !important;
+    padding: 1.4vh !important;
+    margin-bottom: 2.5vh !important;
 }
 
 .bigText
 {
-    width: 80%;
+    width: 100%;
     height: 40%;
     padding: 1.9vh;
     margin-bottom: 2.5vh;
@@ -277,3 +307,7 @@ input[type="text"]:focus , .bigText:focus
     color: var(--main-color);
 }
 
+.sendNotificationBtn:hover
+{
+    background-color: #c1b9ee; 
+}

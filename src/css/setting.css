@@ -1,7 +1,76 @@
 
+
+.settingscontent
+{
+    flex: 1;
+}
+
+.title-setting
+{
+    position: absolute;
+    left: 0;
+    padding-left: 0;
+    top: -7%;
+    font-weight: bold;
+    font-size: larger;
+}
+
 .setting-container
 {
     position: relative;
-    top: 10%;
-    left: 30%;
+    width: 100%;
+    height: 93%;
+    top: 7%;
+    background-color: #FFF;
+    padding-left: 10%;
+    padding-top: 5%;
+    border-radius: 25px;
+    font-family: Raleway;  
+}
+
+.submitted-data strong
+{
+    font-family: Raleway;  
+    font-size: 15px;
+}
+
+
+.submitted-data span
+{
+    margin-left: 1%;
+}
+
+.supportBtn
+{
+    width: 6vw;
+    padding: 0.3vh;
+    border-radius: 1vw;
+    background-color: #FFFFFF;
+    border: 1px solid #7F4BC1;
+    color: #7F4BC1;
+    margin-left: 1%;
+}
+
+.editBtn
+{
+    width: 10vw;
+    padding: 0.7vh;
+    border-radius: 1vw;
+    background-color: #7F4BC1;
+    border: none;
+    color: var(--main-color);
+}
+
+.showHideBtn{
+
+    width: 2vw;
+    padding: 0.3vh;
+    border: none;
+    background-color: #FFF;
+    margin-left: 0;
+}
+
+.showHideBtn img
+{
+    width: 18px;
 }

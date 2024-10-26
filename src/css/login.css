@@ -129,6 +129,11 @@ input[type="password"]:focus {
     color: var(--main-color);
 }
 
+.submitbtn:hover
+{
+    background-color: #c1b9ee; 
+}
+
 .separator {
     margin: 2vh 0;
     font-weight: bold;

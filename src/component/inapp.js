@@ -1,4 +1,5 @@
 
+
 function inappOpenTab(tabName) 
 {
     var i, tabContent, tabs;
@@ -35,7 +36,6 @@ function openLanguageTab(tabName) {
         tabs[i].classList.remove("active");
     }
 
-    // Show the selected language tab content and set active class
     document.getElementById(tabName).style.display = "block";
     document.querySelector(`[onclick="openLanguageTab('${tabName}')"]`).classList.add("active");
     printCode(tabName);
@@ -44,7 +44,9 @@ function openLanguageTab(tabName) {
 function showInappTab() 
 {
     changeMainTab("inappcontent");
-
+    
+    let selectBox=createDropDown(["goku","akshay","vegeta","goku","akshay","vegeta","goku","akshay","vegeta"],"inappSelectBox")
+      
     hljs.highlightAll();
     let contentDiv=document.getElementById("inappcontent");
     contentDiv.innerHTML = `
@@ -52,19 +54,12 @@ function showInappTab()
             <div class="inapp-tabs">
                 <div class="title-inapp">In-App Message</div>
                 <button class="inapp-tab inapp-active" onclick="inappOpenTab('inapp-notify')">Notify</button>
-                <button class="inapp-tab" onclick="inappOpenTab('inapp-configure')">Configure</button>
+                <button class="inapp-tab" onclick="inappOpenTab('inapp-configure')">API</button>
             </div>
 
             <div id="inapp-notify" class="inapp-tab-content">
                <div class="notification-form">
-               <select class="notifyOptions" id="emailDropdown" multiple>
-                <option value="email1@example.com">akshayK@example.com</option>
-                <option value="email2@example.com">email2@example.com</option>
-                <option value="email3@example.com">email3@example.com</option>
-                <option value="email4@example.com">email4@example.com</option>
-                 </select>
-
-
+                `+selectBox+`
                 <input type="text"  placeholder="Enter notification title" />
                 <textarea  class="bigText" placeholder="Enter notification message" ></textarea>
                 <button class="sendNotificationBtn"> Send </button>
@@ -74,6 +69,7 @@ function showInappTab()
             <div id="inapp-configure" class="inapp-tab-content" style="display: none;">
                 <div class="language-tabs-container">
                     <div class="language-tabs">
+                        <button class="copyBtn" id='copyBtn' onclick="copyCode()">Copy</button>
                         <button class="language-tab active" onclick="openLanguageTab('kotlin')">Kotlin</button>
                         <button class="language-tab" onclick="openLanguageTab('java')">Java</button>
                         <button class="language-tab" onclick="openLanguageTab('dart')">Dart</button>
@@ -82,7 +78,8 @@ function showInappTab()
                         <button class="language-tab" onclick="openLanguageTab('api')">API</button>
                     </div>
 
-                    <div id="kotlin" class="tab-content"></div>
+                    <div id="kotlin" class="tab-content" style="display:none;">
+                    </div>
                     <div id="java" class="tab-content" style="display:none;">
                        
                     </div>
@@ -103,14 +100,9 @@ function showInappTab()
         </div>
     `;
     inappOpenTab("inapp-notify");
-    printCode("kotlin") 
-
-    const emailDropdown = new Choices('#emailDropdown', {
-        removeItemButton: true,
-        searchEnabled: false, // You can enable this if you want to add a search bar
-        placeholder: true,
-        placeholderValue: 'Select email IDs',
-    });
+    openLanguageTab('kotlin')
+    
+    MultiselectDropdown(window.MultiselectDropdownOptions);
 }
 
 function printCode(lang) 
@@ -162,4 +154,29 @@ function getCodeForEachLanguage(lang) {
     }
 
     return code;
+}
+
+
+function copyCode()
+{
+    let tabs = document.getElementsByClassName("language-tab");
+    let currentActiveTabName='';
+    for (i = 0; i < tabs.length; i++) 
+    {
+        if(tabs[i].classList.contains("active"))
+            currentActiveTabName=tabs[i].textContent;
+    }    
+    if(currentActiveTabName=='JavaScript')currentActiveTabName="js"
+
+    let activeTab=document.getElementById(currentActiveTabName.toLowerCase());
+
+    navigator.clipboard.writeText(activeTab.innerText);
+        
+    let copyBtn=document.getElementById("copyBtn") ;
+    copyBtn.innerText='Copied!'
+
+    setTimeout(()=>
+        {
+            copyBtn.innerText='Copy'
+        },2000);
 }

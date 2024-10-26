@@ -171,7 +171,7 @@ body
     overflow: hidden;
     border-radius: 20px;
     padding: 3% 1%;
-    background-color: #f9f9f9;
+    background-color: #FFF;
     
 }
 
@@ -187,8 +187,7 @@ body
     text-align: center;
     font-family: Raleway;
     color: #7F4BC1;
-    padding: 5px 10px; 
-    line-height:2.5; 
+    line-height:2.5 !important; 
     overflow: hidden; 
     background-color: #7F4BC1;
     color: #fff;
@@ -198,8 +197,6 @@ body
   #table_div tr
   {
     text-align: center;
-    padding: 5px; 
-    line-height:2.5; 
   }
   
   #table_div td
@@ -207,22 +204,31 @@ body
     text-align: center;
     font-family: 'Nunito';
     font-weight: 450;
-    padding: 0.5%;
   }
   
 
+
+.table-row 
+{
+    height: 20px !important;
+    min-height: 20px !important;
+    max-height: 20px !important;
+    padding:  0px !important;
+}
+
+
   .google-visualization-table-div-page 
   {
-        position: relative;
-        bottom:0;
-        right: 4%;
+        position: fixed;
+        bottom:4%;
+        right: 4% !important;
         background-image: none !important;
         background-color: #fff !important;
         display: flex !important;
         justify-content: flex-end;
         align-items: flex-end;
-        gap: 1%;
         border: none;
+        width: fit-content;
   }
 
   .google-visualization-table-div-page span {
@@ -236,6 +242,7 @@ body
     cursor: pointer; 
     transition: background-color 0.3s; 
     display: none !important;
+    
    
 }
 
@@ -284,15 +291,20 @@ body
 {
     position: relative;
     margin-right: 1vw;
-    width: 3vw;
+    margin-left: 1vw;
+    width: 5vw;
     height: 5vh;
-    border-radius: 1vw;
+    padding: 5px 10px;
+    border-radius: 4px;
     background-color: #7F4BC1;
     border: none;
     color: var(--main-color);
+    font-size: small;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-  /* ADD CLIENT  */
 
 .clientHeader
 {
@@ -370,7 +382,6 @@ body
     color: var(--black-color);
     font-weight: bolder;
     position: relative;
-    
     top: 8%;
     font-size: 2vw;
     text-align: center;

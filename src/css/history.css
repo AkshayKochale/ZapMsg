@@ -1,7 +1,7 @@
 
 .historycontent {
     flex: 1;
-    background-color: #f9f9f9;
+    background-color: #eeeef6;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -11,8 +11,41 @@
     width: 100%;
 }
 
-.date-picker-container {
-    margin-bottom: 20px;
+.title-history
+{
+    position: relative;
+    margin-right: 73%;
+    font-weight: bold;
+    font-size: larger;
+    top: 15%;
+}
+
+.history-date-text
+{
+    position: relative;   
+    font-family: Raleway !important; 
+     margin-right: 2%;   
+     margin-top: 3%;
+}
+
+#history-date {
+    font-family: Raleway;
+    font-size: 14px;
+    padding: 8px;
+    border: 2px solid #eeeef6;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;   
+}
+
+.date-picker-container 
+{   
+    position: absolute;    
+    top:0;
+    z-index: 100;
+    display: flex;
+    width: 40%;
+
 }
 
 .tab-container {
@@ -24,8 +57,6 @@
 
 .tab-button-history 
 {
-    background-color: #7F4BC1;
-    color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -33,6 +64,19 @@
     transition: background-color 0.3s;
     position: relative;
     width: 10%;
+    color: #7F4BC1;
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+
+.active
+{
+    position: relative;
+    background-color: #FFFFFF;
+    font-weight: bold;
+
 }
 
 .tab-button:hover {
@@ -44,23 +88,23 @@
 }
 
 .tab-content-container {
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    background-color: #FFFFFF;
     position: relative;
     width: 100%;
     height: 75%;
 }
 
-.tab-content {
-    display: none;
+
+.tab-content-history
+{
     position: relative;
-    width: 100%;
+    background-color: #FFF;
+    width: 99.1%;
     height: 100%;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
 }
 
-.tab-content.active {
-    display: block;
-}
 
 .graph-placeholder {
     background-color: #e0e0e0;
@@ -80,11 +124,71 @@ table th, table td {
     border-bottom: 1px solid #ddd;
 }
 
-.testImg
+
+
+#chart-pie 
 {
     position: relative;
-    width: 50%;
-    height: 50%;
-    left: 10%;
-    top: 10%;
+    top: 15%;
+    width: 80%;
+    height: 80%;
+}
+
+#chart-trend
+{
+    position: relative;
+    top: 15%;
+    width: 80%;
+    height: 80%;
+}
+
+.google-chart-header {
+    text-align: left;
+    background-color: #7F4BC1; /* Example header color */
+    color: #FFFFFF;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+.google-chart-data 
+{
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    font-family: Raleway;
+    font-weight: 400;
+    text-align: center !important;
+}
+
+.google-visualization-table-div-page
+{   
+    right: 0;
+}
+
+#table-tab
+{
+    position: relative;
+    background-color: #FFF;
+    padding: 1%;
+}
+
+#table-tab .google-visualization-table-div-page 
+{
+    margin-right: 2%;
+}
+
+.google-visualization-table-table th
+{
+    text-align: center !important;
+    font-size: small;
+    font-family: Raleway;
+    line-height:2 !important; 
+}
+
+#table-tab .google-visualization-table-table td
+{
+  text-align: center;
+  font-family: 'Nunito';
+  font-weight: 450;
+  padding: 4px !important;
 }

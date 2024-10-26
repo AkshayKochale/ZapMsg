@@ -8,18 +8,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2%;
 }
 
+.title-mail
+{
+    font-weight: bold;
+    font-size: larger;
+    background-color: #eeeef6;
+}
 
 .mail-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 95%;
     top: 0 !important;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: #FFFFFF;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
@@ -30,12 +35,27 @@
 .mail-input {
     width: 100%;
     padding: 7px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
-/* Quill editor styling */
+.emailSelectBox
+{
+    position: relative;
+    width: 100% !important;
+    padding: 7px;
+    margin-bottom: 20px;
+    
+}
+
+.multiselect-dropdown
+{
+    width: 100% !important;
+    margin-bottom: 1.2%;
+    border: 0.1vw solid #BFBDC2 !important;
+}
+
 #editor-container {
     margin-bottom: 10px;
 }
@@ -53,40 +73,70 @@
 }
 
 .dropzone-container {
-    margin-bottom: 15px;
+    position: relative;
     display: flex;
     justify-content: space-evenly;
+    width: 100%;
+    background-color: #fff;
+    height: 8%;
+    max-height: 8%;
 }
 
-.preview-div
-{
-    border: 1px solid red;
-    width: 30%;
-    padding: 5px !important;
-    text-align: center;
-}
 
 .dropzone {
     background-color: #f9f9f9;
     position: relative;
     width: 30%;
-    min-height: 0;
-    padding: 5px !important;
+    height: 5% !important;
+    min-height: 40px;
+    max-width: 30%;
+    max-height: 40px;
+    padding: 0px !important;
+    border: 1px solid #ddd;
+    
 }
 
-/* Send button styling */
+.utilDiv
+{
+    position: relative;
+    width: 30%;
+    border: 1px solid #ddd;
+    text-align:  center;
+    padding-top: 1%;
+    color: #434244;
+    font-family: Raleway;
+}
+
+.dropzone .dz-message .dz-button
+{
+    display: none;
+}
+
+.dropfilestxt
+{
+    position: absolute;
+    display: inline;
+    z-index: 10;
+    margin-left: -65%;
+    margin-top: 1%;
+    color: #434244;
+    font-family: Raleway;
+}
+
 .send-btn {
-    width: 100%;
+    width: 15%;
     background-color: #7F4BC1;
     color: #fff;
-    padding: 10px;
+    padding: 7px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 1.5%;
+    margin-left: 42%;
 }
 
 .send-btn:hover {
-    background-color: #693AA9;
+    background-color: #c1b9ee;
 }
 
