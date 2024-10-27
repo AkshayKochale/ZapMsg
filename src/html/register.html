@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="../css/common.css">
-
+    <script src="../component/main.js"></script>
+    <script src="../component/common.js"></script>
 </head>
 <body>
+
+    <div class="mainloaderClass" id="mainloaderClass" style="display: none;">
+        <div class="lds-dual-ring"></div>
+      <div class="lds-ring"></div>
+        </div>
     <div class="container">
         <div class="form-content">
             <div class="header">
@@ -19,7 +29,7 @@
             <div class="title-content">
             <h2>Register Here</h2>
             <button class="cancel-btn1" onclick="toggleLogin()">&#10005;</button> </div>
-            <form id="registerForm">
+            <form id="registerForm" onsubmit="submitRegistration(event)">
                 <div class="input-group">
                     <div class="input-half">
                         <label for="firstname">First Name: <span class="required">*</span></label>
@@ -31,11 +41,22 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <div class="input-full">
-                        <label for="username">Username: <span class="required">*</span></label>
-                        <input type="text" id="username" name="username" required placeholder="Enter Your Username">
+                    <div class="input-half">
+                        <label for="username">Username: <span class="required">*</span>
+                         </label>
+                        <input type="text" id="username" name="username" required minlength="4" maxlength="12" oninput="validateUserName()" placeholder="Enter Your Username">
                     </div>
+                    <div class="input-half">
+                        <span class="validClass" id="validClass" style="display: none;">
+                            <img class="validImg" width="25px" height="25px" src="../assets/greentick.svg"/></span> 
+                            
+                    <span class="invalidClass" id="invalidClass" style="display: none;"></span>
+                    </div>
+                    
                 </div>
+
+
+                
                 <div class="input-group">
                     <div class="input-full">
                         <label for="email">Email: <span class="required">*</span></label>
@@ -44,12 +65,12 @@
                 </div>
                 <div class="input-group">
                     <div class="input-half">
-                        <label for="password">Password: <span class="required">*</span></label>
-                        <input type="password" id="password" name="password" required placeholder="Enter Your Password">
+                        <label for="password">Password: <span class="required">*</span><span id="passwordMsg" class="passwordMsg"></span></label>
+                        <input type="password" id="password" name="password" required oninput="checkPassword()" placeholder="Enter Your Password">
                     </div>
                     <div class="input-half">
-                        <label for="confirm-password">Confirm Password: <span class="required">*</span></label>
-                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Your Password">
+                        <label for="confirm-password">Confirm Password: <span class="required">*</span><span id="confirmPassMsg"></span> </label>
+                        <input type="password" id="confirm-password" name="confirm-password" oninput="comparePassword()" required placeholder="Confirm Your Password">
                     </div>
                 </div>
                 <div class="input-group">
@@ -83,7 +104,7 @@
 
     function toggleLogin()
     {
-        window.location.href="/";
+        window.location.href="/src/html/login.html";
     }
 
 </script>

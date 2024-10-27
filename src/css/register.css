@@ -154,3 +154,54 @@ select:focus
     padding: 9px;
 
 }
+
+.validClass
+{
+    color: #5edd60;
+    font-family: RaleWay;
+    font-weight: 600;
+    text-align: end;
+    position: relative;
+    top: 50%;
+    left: -12%;
+}
+
+.invalidClass
+{
+    color: #f44336;
+    font-family: RaleWay;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: end;
+    position: relative;
+    top: 50%;
+    left: -10%;
+}
+
+.validImg
+{
+    position: relative;
+    padding-top: 7px;
+    
+}
+
+.passwordMsg , #confirmPassMsg
+{
+    margin-left: 5%;
+}
+
+.weakPass
+{
+    color: #f44336;
+    font-family: RaleWay;
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.strongPass
+{
+    color: #5edd60;
+    font-family: RaleWay;
+    font-weight: 600;
+    font-size: 10px;
+}

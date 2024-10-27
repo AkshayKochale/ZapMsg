@@ -42,3 +42,42 @@
     background-color:#FFF0F0;
     color: #f93232;
 }
+
+.tab-buttons1
+  {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+
+.addClientBtn
+{
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    border: 1px solid #7F4BC1;
+    border-radius: 15px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    background-color: #7F4BC1;
+    font-family: Raleway;
+    font-weight: 500;
+}
+
+.addClientTabactive
+{
+    background-color: #ece2fa;
+    transform: scale(1.01);
+    color: #7F4BC1;
+    border-radius: 15px;
+}
+
+.blur {
+    filter: blur(10px); 
+    pointer-events: none;
+}

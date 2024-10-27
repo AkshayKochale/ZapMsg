@@ -123,51 +123,43 @@
             table.draw(filteredData,getTableSettings(filteredData.length));
         }
 
+        const clientcontent=document.getElementById("clientcontent");
+
         function showAddContent()
         {
             var addClient= document.getElementById("clientDiv");
             addClient.style.display="block";
-            openTab('manual');
+            openAddClientTab('manual');
 
             content.classList.add("blur");
             tabs.classList.add("blur");
             collapseIcon.classList.add("blur");
+            clientcontent.classList.add("blur");
         }
 
-        function openTab(tabName) 
+        function openAddClientTab(tabName) 
         {
-                var i, tabcontent, tabbuttons;
-                
-                tabcontent = document.getElementsByClassName("tab-content1");
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
-                
-                tabbuttons = document.getElementsByClassName("tab-btn1");
+               
+            var manualTab=document.getElementById("manual");
+            var uploadTab=document.getElementById("upload");
+            var manualBtn= document.getElementById("addmanualBtn");
+            var uploadBtn= document.getElementById("adduploadBtn"); 
 
-                for (i = 0; i < tabbuttons.length; i++) {
-                    tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
-                }
-                
-                var currentActive=document.getElementById(tabName);
-                currentActive .style.display = "block";
-                
-
-                // add selectd to buttons
-
-            var manualBtn= document.getElementById("manualBtn");
-            var uploadBtn= document.getElementById("uploadBtn"); 
-
-            if(tabName!="manual")
+            if(tabName=="manual")
             {
-                uploadBtn.classList.remove("active");
-                manualBtn.classList.add("active");
+                manualBtn.classList.add("addClientTabactive");
+                uploadBtn.classList.remove("addClientTabactive");
+                manualTab.style.display="block";
+                uploadTab.style.display="none";
             }
             else
             {
-                uploadBtn.classList.add("active");
-                manualBtn.classList.remove("active");
+                uploadBtn.classList.add("addClientTabactive");
+                manualBtn.classList.remove("addClientTabactive");
+                manualTab.style.display="none";
+                uploadTab.style.display="block";
             }
+
             }
             
             
@@ -190,8 +182,8 @@
             function clearAddClient()
             {
                 document.getElementById('clientname').value = '';
-            document.getElementById('clientemail').value = '';
-            document.getElementById('clientphone').value = '';
+                document.getElementById('clientemail').value = '';
+                document.getElementById('clientphone').value = '';
 
                 const fileInput = document.getElementById('fileInput');
                 fileInput.value = '';
@@ -202,6 +194,7 @@
             content.classList.remove("blur");
             tabs.classList.remove("blur");
             collapseIcon.classList.remove("blur");
+            clientcontent.classList.remove("blur");
             }
 
 

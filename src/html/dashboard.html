@@ -19,7 +19,7 @@
 <body >
    
    <img class="collapseIcon" id="collapseIcon" src="../assets/collapsIcon.svg"  onclick="minimize()"/>
-    <div class="dashboard-container">
+    <div class="dashboard-container" id="dashboard-container">
         
         <div class="tabs" id="tabs">
 
@@ -76,9 +76,9 @@
         </div>
 
                <h3 class="title-add"> Add Client</h3>
-            <div class="tab-buttons1 tab-buttons">
-                <button class="tab-btn1 tab-btn" id="manualBtn" onclick="openTab('manual')">Manual</button>
-                <button class="tab-btn1 tab-btn" id="uploadBtn" onclick="openTab('upload')">Upload</button>
+            <div class="tab-buttons1">
+                <button class="addClientBtn" id="addmanualBtn" onclick="openAddClientTab('manual')">Manual</button>
+                <button class="addClientBtn" id="adduploadBtn" onclick="openAddClientTab('upload')">Upload</button>
             </div>
         
             <!-- Tab Content -->
@@ -100,13 +100,13 @@
                     <button class="addBtnClick tab-btn"> Add </button>
             </div>
         
-            <div id="upload" class="tab-content1" style="display:none;">
+            <div id="upload" class="tab-content1">
                 <button class="download-btn tab-btn">Demo Excel</button>
                 <button class="download-btn tab-btn" onclick="openFileSystem()">Choose File</button>
                 <input type="file" id="fileInput" name="file" accept=".xls, .xlsx" style="display: none;" />
                 </br> 
                 <label class="fileSelectedLabel" id="fileSelectedLabel"></label>
-                <button class="addBtnClick download-btn tab-btn"> Add </button>
+                <button class="addBtnClick tab-btn"> Add </button>
             </div>
         </div>
     </div>

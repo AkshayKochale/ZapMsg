@@ -150,9 +150,6 @@ body
 }
 
 
-
-  /* GOOGLE TABLE CSS */
-
   .searchDiv
   {
      position: relative;
@@ -352,21 +349,14 @@ body
     z-index: 1000;
     background-color: #fff;
     width: 28vw;
-    height: 85vh;
-    top: 10%;
+    height: 90vh;
+    top: 5%;
     left: 35%;
     border: 1px solid #7F4BC1;
     border-radius: 25px;
   }
 
-  .tab-buttons1
-  {
-    position: relative;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    
-  }
+  
 
   .tab-btn1
   {
@@ -374,6 +364,7 @@ body
     width: 20%;
     text-align: center;
     margin-right: 2%;
+    background-color: #c3a9f5;
   }
 
 
@@ -452,7 +443,7 @@ body
     position: relative;
     width: 50%;
     text-align: center;
-    margin-left: 18%;
+    margin-left: 25%;
     background-color: #7F4BC1;
 
 }
@@ -478,22 +469,15 @@ body
     border: 0.1vw solid #7F4BC1;
 }
 
-.active
-{
 
-    background-color: #ece2fa;
-    transform: scale(1.01);
-    color: #7F4BC1;
-    border-radius: 15px;
-}
 
 .download-btn
 {
     position: relative;
     width: 50%;
     text-align: center;
-    margin-left: 22%;
-    background-color: #7F4BC1;  
+    margin-left: 25%;
+    background-color: #b191db;  
     outline: none;
     border: none;
     color: #fff;
@@ -516,7 +500,3 @@ body
     text-align: center;
 }
 
-.blur {
-    filter: blur(10px); 
-    pointer-events: none;
-}
