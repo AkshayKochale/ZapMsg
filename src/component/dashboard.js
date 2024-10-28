@@ -1,20 +1,32 @@
 google.charts.load('current', { packages: ['table'] });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const username = localStorage.getItem('username'); // Assuming username is stored in localStorage
-    const userElement = document.getElementById('username');
+document.addEventListener("DOMContentLoaded",async function() {
+    
+   let zaptoken= gettokenfromlocalStorage();
+    startLoader();
 
-    if (username) {
-        userElement.textContent = `Welcome, ${username}`;
-    } else {
-        userElement.textContent = 'Welcome, Guest';
+    if (zaptoken) 
+    {
+        let inputData={
+                "token":zaptoken
+        }
+
+        const data =await zapAPICaller("post",urlPrefixServices+"/dashboard/data",inputData,0);
+
+        let msgElement= document.getElementById("welcomeMsg");
+         msgElement.textContent = ` Welcome back, ${data.username}!`;
+
+
+         stopLoader();
+        
+    } else 
+    {
+        stopLoader();    
+        window.location.href="/src/html/login.html";
     }
 
-    document.getElementById('logout').addEventListener('click', function() {
-        localStorage.removeItem('jwt'); // Removing JWT from storage
-        window.location.href = '/login'; // Redirecting to login page
-    });
+
 });
 
 
@@ -101,4 +113,11 @@ function changeMainTab(tabname)
     clientcontent.style.display="none";
 
     document.getElementById(tabname).style.display="flex";
+}
+
+
+ function logout()
+{
+    localStorage.clear();
+    window.location.href ="/";
 }

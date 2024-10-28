@@ -3,6 +3,13 @@ body
     background-color: #eeeef6;
 }
 
+.welcomeMsg
+{
+    font-size: x-large;
+    font-family: Raleway;
+    font-weight: bold;
+}
+
 .header
 {
     display: flex;
@@ -275,14 +282,6 @@ body
     border-radius: 10px;
 }
 
-.searchText::placeholder 
-{
-    position: relative;
-    font-size: 1vw;
-    color: #97959A;
-    font-family: Raleway;
-    padding-left: 5%;
-}
 
 .addBtn
 {

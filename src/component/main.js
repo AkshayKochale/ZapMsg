@@ -88,6 +88,7 @@ async function validateUserName()
         {
           validClass.style.display="inline";
           invalidClass.style.display="none";
+          return true;
         }
         else 
         {
@@ -103,6 +104,8 @@ async function validateUserName()
       validClass.style.display="none";
       invalidClass.style.display="none";
     }
+
+    return false;
 
 }
 
@@ -167,6 +170,13 @@ async function submitRegistration(event)
 {
        event.preventDefault(); 
        startLoader();
+        let isValidUsername= await validateUserName();
+       if(!isValidUsername)
+       {
+        stopLoader();
+        showToastMsg("Failed ","Enter valid Username","failed");
+        return;
+       }
 
     const form = document.getElementById("registerForm");
     const formData = new FormData(form);
@@ -181,13 +191,11 @@ async function submitRegistration(event)
        stopLoader();
           if(data.output && data.output=="Sucessfully Registered")
           {
-
-                // TODO: save in local storage to display after login page load
-                setTimeout(() => {
                 showToastMsg("Sucessfully registered","","success");
-              }, 2000);
 
-            window.location.href="/src/html/login.html";
+                setTimeout(() => {
+                  window.location.href="/src/html/login.html";
+              }, 2000);
           }
           else
           {

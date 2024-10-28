@@ -169,3 +169,21 @@ html {
     transform: rotate(360deg);
   }
 }
+
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    
+    font-family: Raleway;
+    padding-left: 2%;
+}
+
+
+input[type="text"],
+input[type="email"],
+textarea {
+    
+    font-family: Raleway;
+    padding-left: 2%;
+}

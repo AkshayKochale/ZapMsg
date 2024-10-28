@@ -9,58 +9,62 @@
             <Button class="addBtn" title="Add Client" onclick="showAddContent(event)" >
             <span class="plus">+</span> Add</Button></div><div id="table_div"></div>` ;
 
-        var data=getData(); 
-        var table = getTableObj();
-        console.log(data.getNumberOfRows());
-        var setting=getTableSettings(data.getNumberOfRows());
-        table.draw(data, setting);
-
+            displayClientDataTable(); 
         }
 
 
 
         const rowsPerPage = 10; 
         let currentPage = 10;
+        let cachedData;
 
-
-        function getData()
+        async function displayClientDataTable() 
         {
+            startLoader();
+            let zaptoken = gettokenfromlocalStorage();
+            let inputData = {
+                "token": zaptoken
+            };
+        
+            
+            const apiData = await zapAPICaller("post", urlPrefixServices + "/clientService/getallclient", inputData, 500);
+            
+            if (!Array.isArray(apiData)) {
+                console.error("Error: apiData is not in the expected format.");
+                return new google.visualization.DataTable();
+            }
+        
+            
+            
             var data = new google.visualization.DataTable();
-                
             data.addColumn('string', 'Username');
             data.addColumn('string', 'Email');
             data.addColumn('string', 'Phone');
             data.addColumn({ type: 'string', label: 'Status', p: { html: true } });
             data.addColumn('string', 'Client Type');
-
         
-            data.addRows([
-                ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
-                ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
-                ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
-                ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
-                ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
-                ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
-                ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
-                ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
-                ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
-                ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
-                ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
-                ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
-                ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
-                ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
-                ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
-                ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
-                ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
-                ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real'],
-                ['Akshay Kochale', 'akshaykochale78@gmail.com', '1291929129129', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Bot'],
-                ['Ramon Dino', 'ramonDino@gmail.com', '1234467890', '<button class="status-inactive" onclick="changeStatus()">Inactive</button>', 'Bot'],
-                ['Suzi lexus', 'suzi@yahoo.com', '1234467890', '<button class="status-active" onclick="changeStatus()">Active</button>', 'Real']
-            ]);
             
-
-            return data;
+            apiData.forEach(client => {
+                let status = client.isactive 
+                    ? '<button class="status-active" onclick="changeStatus('+client.zapclientid+')">Active</button>'
+                    : '<button class="status-inactive" onclick="changeStatus('+client.zapclientid+')">Inactive</button>';
+        
+                data.addRow([
+                    client.clientname,
+                    client.clientemail,
+                    client.clientphone,
+                    status,
+                    client.clienttype
+                ]);
+            });
+        
+            
+            const table = getTableObj();
+            table.draw(data,getTableSettings(apiData.length));
+            cachedData=data;
+             stopLoader();   
         }
+        
 
         function getTableObj()
         {
@@ -70,7 +74,7 @@
         function getTableSettings(rowCount)
         {
 
-            var tableHeight = rowCount <= 10 ? (rowCount * 50) + 'px' : '100%';
+            var tableHeight = rowCount <= 3 ? (rowCount * 100) + 'px' : '100%';
             console.log;("table height :"+tableHeight)
 
         var setting= {
@@ -93,34 +97,41 @@
             return setting;
         }
 
-
-
-        function filterTable(event) 
-        {
-            searchTerm= event.target.value.toLowerCase();
+        function filterTable(event) {
+            const searchTerm = event.target.value.toLowerCase();
             const filteredData = new google.visualization.DataTable();
+        
             filteredData.addColumn('string', 'Client Name');
             filteredData.addColumn('string', 'Email');
             filteredData.addColumn('string', 'Phone');
             filteredData.addColumn({ type: 'string', label: 'Status', p: { html: true } });
             filteredData.addColumn('string', 'Client Type');
-            
-            var data=getData();
-            for (var i = 0; i < data.getNumberOfRows(); i++) 
-            {
-                const name = data.getValue(i, 0).toLowerCase();
-                const email = data.getValue(i, 1).toLowerCase();
-                const phone = data.getValue(i, 2).toLowerCase();
-                
-                
+        
+            let rowsAdded = false;
+        
+            for (let i = 0; i < cachedData.getNumberOfRows(); i++) {
+                const name = cachedData.getValue(i, 0).toLowerCase();
+                const email = cachedData.getValue(i, 1).toLowerCase();
+                const phone = cachedData.getValue(i, 2).toLowerCase();
+        
                 if (name.includes(searchTerm) || email.includes(searchTerm) || phone.includes(searchTerm)) {
-                    filteredData.addRow([data.getValue(i, 0), data.getValue(i, 1),
-                        data.getValue(i, 2),   data.getValue(i, 3),data.getValue(i, 4)]);
+                    filteredData.addRow([
+                        cachedData.getValue(i, 0),
+                        cachedData.getValue(i, 1),
+                        cachedData.getValue(i, 2),
+                        cachedData.getValue(i, 3),
+                        cachedData.getValue(i, 4)
+                    ]);
+                    rowsAdded = true; 
                 }
             }
-
-            var table =getTableObj();
-            table.draw(filteredData,getTableSettings(filteredData.length));
+        
+            if (!rowsAdded) {
+                filteredData.addRow(["", "", "", "", ""]);
+            }
+        
+            const table = getTableObj();
+            table.draw(filteredData, getTableSettings(filteredData.getNumberOfRows()));
         }
 
         const clientcontent=document.getElementById("clientcontent");
@@ -179,8 +190,57 @@
                 });
             }
 
-            function clearAddClient()
+            
+
+
+            function loadDashboard()
             {
+
+                showClient();
+                clearAddClientData();
+                
+            }
+
+            async function addClient ()
+            {   
+
+               startLoader(); 
+               let inputData= getAddClientFormData();
+
+               const apiData = await zapAPICaller("post", urlPrefixServices + "/clientService/addclient", inputData, 1000);
+                
+               if(apiData && apiData.status=='success')
+               {
+                    stopLoader()
+                    showToastMsg("Success", apiData.output +" "+inputData.clientname, "success");
+                    loadDashboard()
+               }
+               else
+               {
+                stopLoader()
+                showToastMsg("Failed", apiData.output, "Failed");
+               }
+            }    
+
+
+            function getAddClientFormData() {
+                const clientData = {
+                    token:gettokenfromlocalStorage(),
+                    created: new Date(), 
+                    clientname: document.getElementById("clientname").value,
+                    clientemail: document.getElementById("clientemail").value,
+                    clientphone: document.getElementById("clientphone").value,
+                    isactive: true, 
+                   
+                    clienttype: document.querySelector('input[name="clienttype"]:checked') 
+                        ? document.querySelector('input[name="clienttype"]:checked').value 
+                        : null 
+                };
+            
+                return clientData;
+            }
+            
+            function clearAddClientData() {
                 document.getElementById('clientname').value = '';
                 document.getElementById('clientemail').value = '';
                 document.getElementById('clientphone').value = '';
@@ -190,16 +250,117 @@
 
                 document.getElementById("fileSelectedLabel").innerText="";  
 
-            document.getElementById("clientDiv").style.display='none';
-            content.classList.remove("blur");
-            tabs.classList.remove("blur");
-            collapseIcon.classList.remove("blur");
-            clientcontent.classList.remove("blur");
+                    document.getElementById("clientDiv").style.display='none';
+                    content.classList.remove("blur");
+                    tabs.classList.remove("blur");
+                    collapseIcon.classList.remove("blur");
+                    clientcontent.classList.remove("blur");
             }
+            
 
+            function downloadExcel() {
+                let path = "../assets/demoExcel.xlsx";
+                const link = document.createElement('a');
+                link.href = path;
+                link.download = 'demoExcel.xlsx';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            
 
-            function loadDashboard()
+            async function acceptExcel() 
             {
-                clearAddClient();
-                displayEmailTab();
+              let inputArray= await getJsonFromExcel();
+                   
+             if(inputArray==null || inputArray==undefined || inputArray.length==0) 
+             {
+                showToastMsg("Error parsing file.", "Hint : Redownload and upload", "failed");
+                return;
+             }
+            inputArray.shift();
+              let inputData=
+              {
+                    "token":gettokenfromlocalStorage(),
+                     "clientpojo":convertJsonArray(inputArray)
+              }
+
+              const apiData = await zapAPICaller("post", urlPrefixServices + "/clientService/multiclientadd", inputData, 0);
+
+              if(apiData && apiData.status=='success')
+                {
+                     stopLoader()
+                     showToastMsg("Success", apiData.output, "success");
+                     loadDashboard()
+                }
+                else
+                {
+                 stopLoader()
+                 showToastMsg("Failed", apiData.output, "Failed");
+                }
+            }
+            
+            function getJsonFromExcel() {
+                const fileInput = document.getElementById('fileInput');
+                const file = fileInput.files[0];
+            
+                if (!file) {
+                    showToastMsg("Failed", "No file selected", "failed");
+                    return Promise.reject("No file selected");
+                }
+            
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+            
+                    reader.readAsArrayBuffer(file);
+            
+                    reader.onload = function (event) {
+                        try {
+                            const data = new Uint8Array(event.target.result);
+                            const workbook = XLSX.read(data, { type: 'array' });
+                            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                            const jsonArray = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+            
+                            resolve(jsonArray);
+                        } catch (error) {
+                            showToastMsg("Error parsing file.", "Hint: Redownload and upload", "failed");
+                            reject(error);
+                        }
+                    };
+            
+                    reader.onerror = function () {
+                        showToastMsg("Error reading file.", "Hint: Try a different file", "failed");
+                        reject("File read error");
+                    };
+                });
+            }
+            
+            function convertJsonArray(jsonArray) {
+                return jsonArray.map(item => ({
+                    clientname: item[0],
+                    clientemail: item[1],
+                    clientphone: item[2],
+                    isactive: true,
+                    clienttype: item[3] === "Bot" || item[3] === "Real" ? item[3] : "Bot" // Default to "Unknown" if not "Bot" or "Real"
+                }));
+            }
+            
+
+            async function changeStatus(clientId)
+            {
+               startLoader()
+                const apiData = await zapAPICaller("get", urlPrefixServices + "/clientService/toggleactive/"+clientId, null,0);
+  
+                if(apiData && apiData.status=='success')
+                  {
+                       stopLoader()
+                       showToastMsg("Success", apiData.output, "success");
+                       sleep(3000)
+                       showClient();
+                  }
+                  else
+                  {
+                   stopLoader()
+                   showToastMsg("Failed", apiData.output, "Failed");
+                  }
             }

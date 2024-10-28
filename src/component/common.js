@@ -43,7 +43,7 @@ async function zapAPICaller(type, url, input,sleepTime) {
 function sleep(milliseconds) {
     const start = Date.now();
     while (Date.now() - start < milliseconds) {
-        // Loop until the specified time has passed
+        
     }
 }
 
@@ -106,3 +106,14 @@ function stopLoader()
    mainloaderClass.style.display="none";
 }
 
+function gettokenfromlocalStorage()
+{
+    const zaptoken = localStorage.getItem('zaptoken');
+
+    if(zaptoken==null || zaptoken==undefined || zaptoken=="")
+        {
+            window.location.href="/";
+        }
+
+      return zaptoken;  
+}
