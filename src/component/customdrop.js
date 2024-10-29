@@ -306,3 +306,8 @@ function createDropDown(list,name)
     return select;
 }
 
+function getSelectedValues(name) {
+  const selectElement = document.getElementById(name);
+  const selectedValues = Array.from(selectElement.selectedOptions).map(option => option.value);
+  return selectedValues;
+}

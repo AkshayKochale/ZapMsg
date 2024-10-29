@@ -1,56 +1,105 @@
 function showHistoryTab()
 {
     changeMainTab("historycontent");
-   let historycontent= document.getElementById("historycontent");
+    let historycontent= document.getElementById("historycontent");
 
-   const data = [
-    ['Type', 'Value'],
-    ['In-app Message', 45],
-    ['Email', 26]
-];
-    let pieChart=createPieChart(data,"From 26 Oct");
+    let content=`
+             <span class="title-history-temp">History</span>
+            <span class="date-picker-container">
+         <label for="history-date" class="history-date-text">Select From Date:</label>
+         <input type="date" id="history-date" name="history-date">
+         <button class="submitDate" id="submitDate" onClick="displayCharts(event)">Submit</button>
+     </span>
+ 
+     <div class="tab-container">
+          <div class="landingcontentHistory" id="landingcontentHistory" >
+                    <span class="welcomeMsgHistory" id="welcomeMsgHistory"> Select Date to see History</span>
+                    <img class="HistoryImg" src="../assets/historyLandingImage.svg"> </img>
+                </div>    
+         </div>         
+         
+        `
 
-    const trendData = [
-        ['Time', 'In-app Msg', 'Email'],  // Header row with labels for both lines
-        ['Jan', 30, 20],
-        ['Feb', 40, 25],
-        ['Mar', 45, 35],
-        ['Apr', 35, 30],
-        ['May', 50, 45],
-        ['Jun', 55, 55]
-    ];
-    
-
-   let trendChart=createTrendChart(trendData);
-
-
-   historycontent.innerHTML=`
-              <span class="date-picker-container">
-        <label for="history-date" class="history-date-text">Select From Date:</label>
-        <input type="date" id="history-date" name="history-date">
-    </span>
-
-    <div class="tab-container">
-    <div class="title-history">History</div>
-        <button class="tab-button-history active" onclick="openTab('graph-tab')">Graph</button>
-        <button class="tab-button-history" onclick="openTab('table-tab')">Table</button>
-    </div>
-
-        <div id="graph-tab" class="tab-content-history active" style="display: flex; position: relative; width: 100%;">
-               `+pieChart+` `+trendChart+`
-        </div>
-
-        <div id="table-tab" class="tab-content-history" style="display:none">
-           
-        </div>
-   
-   `;
-
-   var historyData=getHistoryData(); 
-   var table = getTableObj1();
-     table.draw(historyData, getTableSettingsHistory());
+        historycontent.innerHTML=content;  
+        
 }
 
+
+ async function displayCharts(event)
+ {
+    event.preventDefault(); 
+    startLoader(); 
+    let historycontent= document.getElementById("historycontent");
+    const dateInput = document.getElementById("history-date").value;
+    
+
+       let inputdata={
+            date:dateInput,
+            token :gettokenfromlocalStorage()
+       }; 
+    const apiData = await zapAPICaller("post",urlPrefixServices+"/history/getfromdate",inputdata,3000); 
+
+    if(apiData ==null || apiData.legend==0 ||apiData.status=="failed")
+    {
+        let status =apiData.output;
+
+        if(status==null || status==undefined )status="No data available";
+
+        showToastMsg("Failed", status, "Failed");
+        return;
+    }
+
+    let aggCount=apiData.aggCount;
+
+    const data = [
+     ['Type', 'Value'],
+     ['In-app Message', aggCount.notification],
+     ['Email', aggCount.email]
+ ];
+     let pieChart=createPieChart(data,"From "+dateInput);
+ 
+     const trendData = [
+         ['Time', 'In-app Msg', 'Email'],  
+     ];
+
+     let dateWise=apiData.dateWise     
+     
+     for (let key in dateWise) 
+    {
+        trendData.push([key,dateWise[key].notification,dateWise[key].email]);
+     }
+     
+ 
+    let trendChart=createTrendChart(trendData);
+ 
+ 
+    historycontent.innerHTML=`
+               <span class="date-picker-container">
+         <label for="history-date" class="history-date-text">Select From Date:</label>
+         <input type="date" id="history-date" name="history-date">
+         <button class="submitDate" id="submitDate" onClick="displayCharts(event)">Submit</button>
+     </span>
+ 
+     <div class="tab-container">
+     <div class="title-history">History</div>
+         <button class="tab-button-history active" onclick="openTab('graph-tab')">Graph</button>
+         <button class="tab-button-history" onclick="openTab('table-tab')">Table</button>
+     </div>
+ 
+         <div id="graph-tab" class="tab-content-history active" style="display: flex; position: relative; width: 100%;">
+                `+pieChart+` `+trendChart+`
+         </div>
+ 
+         <div id="table-tab" class="tab-content-history" style="display:none"></div>
+         <div class="showHistoryDiv" id="showHistoryDiv" style="display: none;"></div>
+    
+    `;
+ 
+    var historyData=getHistoryData(apiData.tableData); 
+    var table = getTableObj1();
+      table.draw(historyData, getTableSettingsHistory());
+      stopLoader()
+ }
 
 function openTab(tabId) 
 {
@@ -143,35 +192,24 @@ function getTableObj1()
 }
 
 
-function getHistoryData() {
+function getHistoryData(tableData) {
     var data = new google.visualization.DataTable();
 
     data.addColumn('string', 'Username');
     data.addColumn('string', 'Date'); 
     data.addColumn('string', 'Message Type'); 
+    data.addColumn({ type: 'string', label: 'View', p: { html: true } });
 
-    data.addRows([
-        ['Akshay Kochale', '2024-10-01', 'Info'],
-        ['Ramon Dino', '2024-10-02', 'Warning'],
-        ['Suzi Lexus', '2024-10-03', 'Error'],
-        ['John Doe', '2024-10-04', 'Success'],
-        ['Jane Smith', '2024-10-05', 'Info'],
-        ['Alice Johnson', '2024-10-06', 'Warning'],
-        ['Bob Brown', '2024-10-07', 'Error'],
-        ['Charlie Davis', '2024-10-08', 'Success'],
-        ['Diana Prince', '2024-10-09', 'Info'],
-        ['Edward Elric', '2024-10-10', 'Warning'],
-        ['Fiona Green', '2024-10-11', 'Error'],
-        ['George White', '2024-10-12', 'Success'],
-        ['Hannah Blue', '2024-10-13', 'Info'],
-        ['Ian Gray', '2024-10-14', 'Warning'],
-        ['Jack Black', '2024-10-15', 'Error'],
-        ['Kylie Pink', '2024-10-16', 'Success'],
-        ['Leo Yellow', '2024-10-17', 'Info'],
-        ['Maya Purple', '2024-10-18', 'Warning'],
-        ['Nina Orange', '2024-10-19', 'Error'],
-        ['Owen Red', '2024-10-20', 'Success']
-    ]);
+    tableData.forEach(history => {
+                let viewBtn = '<button class="viewBtnHistory" onclick="viewHistoryMesg('+history.historyid+')">View</button>'
+                    
+                data.addRow([
+                    history.username,
+                    history.date,
+                    history.type,
+                    viewBtn
+                ]);
+            });
 
     return data;
 }
@@ -186,12 +224,21 @@ function getTableSettingsHistory() {
         pageSize: 14,   
         allowHtml: true,
         cssClassNames: {
-            headerRow: 'google-chart-header',    // Header row class
-            tableRow: 'google-chart-data',       // Data row class
-            oddTableRow: 'odd-row',              // Optional styling for odd rows
-            hoverTableRow: 'table-hover'         // Optional styling for hover effect
+            headerRow: 'google-chart-header',   
+            tableRow: 'google-chart-data',      
+            oddTableRow: 'odd-row',             
+            hoverTableRow: 'table-hover'        
         }
     };
 
     return setting;
+}
+
+
+async function viewHistoryMesg(historyId)
+{
+    console.log("view history clicked !!!"+historyId);
+    let showHistoryDiv=document.getElementById("showHistoryDiv");
+    showHistoryDiv.style.display="block";
+
 }

@@ -103,6 +103,7 @@
     height: 100%;
     border-radius: 10px;
     border-top-right-radius: 0px;
+    
 }
 
 
@@ -192,4 +193,93 @@ table th, table td {
   font-family: 'Nunito';
   font-weight: 450;
   padding: 4px !important;
+}
+
+.submitDate
+{
+    padding: 0px 8px;
+    color: #fff;
+    border: 1px solid #7F4BC1;
+    border-radius: 15px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    background-color: #7F4BC1;
+    font-family: Raleway;
+    font-weight: 500;
+    margin-left: 1%;
+}
+
+.submitDate:hover
+{
+    background-color: #eeeef6;
+    color: #7F4BC1;
+}
+
+.landingcontentHistory
+{
+    position: relative;
+    width: 100%;
+    height: 107%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    background-color: #FFF;
+    border-radius: 15px;
+}
+
+.HistoryImg
+{
+    position: relative;
+    width: 380px;
+    height: 450px;
+}
+
+.welcomeMsgHistory
+{
+    position: absolute;
+    top: 50px;
+    margin-bottom: 0;
+    font-size: x-large;
+    font-family: Raleway;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+.title-history-temp
+{
+    position: relative;
+    display: inline;
+    font-weight: bold;
+    font-size: larger;
+    left: -45%;
+    top: -4%;
+}
+
+.viewBtnHistory{
+
+    position: relative;
+    background-color: none;
+    border-radius: 12px;
+    padding: 0.3% 10%;
+    font-size: x-small;
+    font-weight: 500;
+    border: 1px solid white;
+    background-color:#a97aeb;
+    color: #eeeef6;
+}
+
+.showHistoryDiv
+{
+    position: relative;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+
 }

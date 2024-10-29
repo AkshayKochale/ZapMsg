@@ -41,11 +41,24 @@ function openLanguageTab(tabName) {
     printCode(tabName);
 }
 
-function showInappTab() 
+async  function showInappTab() 
 {
+    startLoader()
     changeMainTab("inappcontent");
-    
-    let selectBox=createDropDown(["goku","akshay","vegeta","goku","akshay","vegeta","goku","akshay","vegeta"],"inappSelectBox")
+    let inputData={
+            token :gettokenfromlocalStorage()    
+    };
+
+    const apiData =await zapAPICaller("post",urlPrefixServices+"/inapp/getallactiveusers",inputData,0);
+
+    if(apiData.status=="failed")
+    {
+        stopLoader();
+        showToastMsg("Failed", apiData.output, "Failed");
+        return ;
+    }
+
+    let selectBox=createDropDown(apiData.output,"inappSelectBox")
       
     hljs.highlightAll();
     let contentDiv=document.getElementById("inappcontent");
@@ -60,9 +73,9 @@ function showInappTab()
             <div id="inapp-notify" class="inapp-tab-content">
                <div class="notification-form">
                 `+selectBox+`
-                <input type="text"  placeholder="Enter notification title" />
-                <textarea  class="bigText" placeholder="Enter notification message" ></textarea>
-                <button class="sendNotificationBtn"> Send </button>
+                <input type="text" id="notificationtitle" placeholder="Enter notification title" />
+                <textarea  class="bigText" id="notificationMsg"  placeholder="Enter notification message" ></textarea>
+                <button class="sendNotificationBtn" onClick="sendNotification()"> Send </button>
             </div>
             </div>
 
@@ -103,7 +116,36 @@ function showInappTab()
     openLanguageTab('kotlin')
     
     MultiselectDropdown(window.MultiselectDropdownOptions);
+    stopLoader();
 }
+
+ async function sendNotification()
+{
+   let ListOfSelectedClient= getSelectedValues("inappSelectBox");
+   let notificationtitle=document.getElementById("notificationtitle");
+   let notificationMsg=document.getElementById("notificationMsg");
+
+    if(notificationtitle.value.length>20)
+    {
+        showToastMsg("Cannot send notification", "Title size should be less than 20", "Failed");
+        return ;
+    }
+    if(notificationMsg.value.length>50)
+    {
+        showToastMsg("Cannot send notification","Message size should be less than 50", "Failed");
+        return ;
+    }
+
+   let inputData={
+      token:gettokenfromlocalStorage(),
+      clients :ListOfSelectedClient,
+      notificationtitle:notificationtitle.value,
+      notificationmsg:notificationMsg.value
+   }
+
+   console.log(inputData);
+}
+
 
 function printCode(lang) 
 {
