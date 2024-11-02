@@ -9,7 +9,6 @@
     <link rel="icon" href="../assets/thunderIcon.svg" alt="lightning-bolt"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css">
     <link rel="stylesheet" href="https://unpkg.com/quill-emoji/dist/quill-emoji.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
@@ -69,6 +68,9 @@
         </div>
         <div class="emailcontent" id="emailcontent" style="display: none;">
         </div>
+        <div class="emailPop" id="emailPop"  style="display: none;"> 
+           
+        </div>
         <div class="whatsappcontent" id="whatsappcontent" style="display: none;">
         </div>
         <div class="historycontent" id="historycontent" style="display: none;">
@@ -77,6 +79,13 @@
         <div class="settingscontent" id="settingscontent" style="display: none;">
         </div>
 
+        <div class="showHistoryDiv" id="showHistoryDiv" style="display: none;">
+            <button class="cancel-btn-history" id="cancel-btn-history" onclick="hideHistoryMsgDiv()">&#10005;</button> 
+            <div class="historyMsg-content">
+                <div id="historyMsg-title"></div></br>
+                <div id="historyMsg-msg"></div>
+            </div>
+         </div>
         <div class="addClient" id="clientDiv" style="display: none;">
             <div class="clientHeader">
             <img  class="addclientLogo" src="../assets/thunderIcon.svg" alt=""/>
@@ -129,7 +138,6 @@
     <script type="text/javascript" src="../component/settings.js"></script>
     <script type="text/javascript" src="../component/inapp.js"></script>
     <script type="text/javascript" src="../component/customdrop.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://unpkg.com/quill-emoji/dist/quill-emoji.js"></script>
     <link rel="stylesheet" href="../css/inapp.css" />

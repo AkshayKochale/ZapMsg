@@ -27,9 +27,9 @@
             </div>
 
             <div class="title-content">
-            <h2>Register Here</h2>
+            <h2>Edit Profile</h2>
             <button class="cancel-btn1" onclick="toggleLogin()">&#10005;</button> </div>
-            <form id="registerForm" onsubmit="submitRegistration(event,true)">
+            <form id="updateForm" onsubmit="updateRegistration(event,false)">
                 <div class="input-group">
                     <div class="input-half">
                         <label for="firstname">First Name: <span class="required">*</span></label>
@@ -44,7 +44,7 @@
                     <div class="input-half">
                         <label for="username">Username: <span class="required">*</span>
                          </label>
-                        <input type="text" id="username" name="username" required minlength="4" maxlength="12" oninput="validateUserName()" placeholder="Enter Your Username">
+                        <input type="text" id="username" name="username" required readonly minlength="4" maxlength="12" oninput="validateUserName()" placeholder="Enter Your Username">
                     </div>
                     <div class="input-half">
                         <span class="validClass" id="validClass" style="display: none;">
@@ -104,8 +104,41 @@
 
     function toggleLogin()
     {
-        window.location.href="/src/html/login.html";
+        window.location.href="/src/html/dashboard.html";
+        
     }
+
+
+    window.onload =  async function() 
+    {   
+        startLoader();
+        let inputData={
+            token :gettokenfromlocalStorage()    
+            };
+
+         const apiData =await zapAPICaller("post",urlPrefixServices+"/registration/getprofileforedit",inputData,0);  
+
+         if(apiData==null || apiData.status=="failed")
+         {  
+            stopLoader();
+            showToastMsg("Failed", apiData.output, "Failed");
+            return ;
+         }
+         
+        populateForm(apiData);
+        stopLoader();
+        showToastMsg("Recommendation", "We Suggest Yout To Change Your Password", "success");
+    };
+
+    function populateForm(data) 
+{
+    document.getElementById("firstname").value = data.firstname || '';
+    document.getElementById("lastname").value = data.lastname || '';
+    document.getElementById("username").value = data.username || '';
+    document.getElementById("email").value = data.email || '';
+    document.getElementById("country").value = data.country || '';
+    document.getElementById("phone").value = data.phone || '';
+}
 
 </script>
 </html>

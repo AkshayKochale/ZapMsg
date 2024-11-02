@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    
+    <title>WebSocket Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs/lib/stomp.min.js"></script>
 </head>
 <body>
-    <div class="mainloaderClass">
-    <div class="lds-dual-ring"></div>
-  <div class="lds-ring"></div>
-    </div>
-    
-    <h3>Akshay</h3>
+    <h1>WebSocket Test</h1>
+    <button onclick="sendMessage()">Send Message</button>
+    <script>
+       const socket = new SockJS('http://192.168.0.101:8182/notifications'); // Use the actual IP and port of your Spring Boot app
+
+        const stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/notifications', function (message) {
+                console.log("Received message: " + message.body);
+            });
+        });
+
+        function sendMessage() {
+            const message = "Hello WebSocket!";
+            stompClient.send("/app/send", {}, message);
+        }
+    </script>
 </body>
-
-<style>
-    
-
-</style>
-
 </html>

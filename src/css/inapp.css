@@ -240,9 +240,8 @@
 .notification-form {
     position: relative;
     top: 10%;
-    left: 10%;
-    width: 50%;
-    height: 60%;
+    width: 60%;
+    height: 70%;
     border-radius: 10px;
     padding: 2%;
     display: flex;
@@ -251,6 +250,26 @@
     justify-content: center;
     border: 2px solid #eeeef6;
 
+}
+
+.inappflex
+{
+    display: flex !important;
+    gap: 2%;
+    justify-content: center;
+}
+
+.description-box
+{
+    position: relative;
+    /* border: 1px solid red; */
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    height: 60%;
+    flex-direction: column;
 }
 
 *::placeholder 
@@ -307,7 +326,42 @@ input[type="text"]:focus , .bigText:focus
     color: var(--main-color);
 }
 
-.sendNotificationBtn:hover
+.sendNotificationBtn:hover ,.appDownloadBtn:hover
 {
     background-color: #c1b9ee; 
+}
+
+
+.appDownloadBtn
+{
+    position: relative;
+    width: 10vw;
+    padding: 1.6vh;
+    border-radius: 1vw;
+    background-color: #7F4BC1;
+    border: none;
+    color: var(--main-color);
+}
+
+
+.info-app{
+
+    font-size: 1vw;
+    color: #97959A;
+    font-family: Raleway;
+}
+
+.dowloadApp
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.downladappmsg{
+    position: relative;
+    font-size: 0.8vw;
+    margin-bottom: 2%;
+    font-family: Raleway;
 }

@@ -68,6 +68,7 @@
     border-radius: 0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    background-color: #eeeef6;
     
 }
 
@@ -99,7 +100,7 @@
 {
     position: relative;
     background-color: #FFF;
-    width: 99.1%;
+    width: 100%;
     height: 100%;
     border-radius: 10px;
     border-top-right-radius: 0px;
@@ -276,10 +277,58 @@ table th, table td {
 
 .showHistoryDiv
 {
-    position: relative;
-    background-color: red;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    background-color: #FFF;
+    width: 30%;
+    height: 40%;
     z-index: 1000;
+    top: 30%;
+    left: 35%;
+    border-radius: 12px;
+    border: 1px solid #7F4BC1;
+}
+
+.cancel-btn-history
+{
+    position: relative;
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    color: #7F4BC1;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    justify-content: unset;
+    right: -92%; 
+    top: 2%; 
+    animation: none !important;
 
 }
+
+.historyMsg-content
+{
+    /* border: 1px solid red; */
+    width: 94%;
+    height: 75%;
+    margin: 3%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    font-family: Raleway;
+    gap: 1%;
+}
+
+
+
+#historyMsg-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    /* margin-bottom: 10px; */
+}
+
+#historyMsg-msg {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.4;
+}
+

@@ -16,6 +16,14 @@ function inappOpenTab(tabName)
         tabs[i].classList.remove("inapp-active");
     }
 
+    if(tabName=="inapp-notify")
+    {
+        document.getElementById(tabName).classList.add("inappflex");
+    }
+    else
+       document.getElementById("inapp-notify").classList.remove("inappflex");
+
+
     // Show the selected tab content and set active class
     document.getElementById(tabName).style.display = "block";
     document.querySelector(`[onclick="inappOpenTab('${tabName}')"]`).classList.add("inapp-active");
@@ -77,6 +85,17 @@ async  function showInappTab()
                 <textarea  class="bigText" id="notificationMsg"  placeholder="Enter notification message" ></textarea>
                 <button class="sendNotificationBtn" onClick="sendNotification()"> Send </button>
             </div>
+                    <div class="description-box">
+                    <div class="dowloadApp">
+                        <div class="downladappmsg">Click here to download demo app</div>
+                        <button class="appDownloadBtn">Download</button>
+                     </div>
+                     <br>
+                    <div class="info-app">
+                        <div class="info-main">Username : <span class="info-sec">{ClientName}</span></div>
+                        <div class="info-main">Password : <span class="info-sec">12345</span></div>
+                        </div>
+                    </div>
             </div>
 
             <div id="inapp-configure" class="inapp-tab-content" style="display: none;">
@@ -88,7 +107,7 @@ async  function showInappTab()
                         <button class="language-tab" onclick="openLanguageTab('dart')">Dart</button>
                         <button class="language-tab" onclick="openLanguageTab('swift')">Swift</button>
                         <button class="language-tab" onclick="openLanguageTab('js')">JavaScript</button>
-                        <button class="language-tab" onclick="openLanguageTab('api')">API</button>
+                       
                     </div>
 
                     <div id="kotlin" class="tab-content" style="display:none;">
@@ -105,9 +124,7 @@ async  function showInappTab()
                     <div id="js" class="tab-content" style="display:none;">
                        
                     </div>
-                    <div id="api" class="tab-content" style="display:none;">
-                       
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -121,17 +138,20 @@ async  function showInappTab()
 
  async function sendNotification()
 {
+    startLoader(); 
    let ListOfSelectedClient= getSelectedValues("inappSelectBox");
    let notificationtitle=document.getElementById("notificationtitle");
    let notificationMsg=document.getElementById("notificationMsg");
 
     if(notificationtitle.value.length>20)
     {
+        stopLoader();
         showToastMsg("Cannot send notification", "Title size should be less than 20", "Failed");
         return ;
     }
     if(notificationMsg.value.length>50)
     {
+        stopLoader();
         showToastMsg("Cannot send notification","Message size should be less than 50", "Failed");
         return ;
     }
@@ -143,8 +163,16 @@ async  function showInappTab()
       notificationmsg:notificationMsg.value
    }
 
-   console.log(inputData);
+   const data = await zapAPICaller("post",urlPrefixServices+"/inapp/sendnotification",inputData,2000);
+
+   
+   if(data)
+   {
+        showToastMsg(data.status, data.output, data.status)
+   }
+   stopLoader();
 }
+
 
 
 function printCode(lang) 
@@ -158,39 +186,257 @@ function printCode(lang)
 
 function getCodeForEachLanguage(lang) {
     let code = "";
-    if (true) {
-        code = `<pre class="code-block"><code class="language-`+lang+`">
-            class Animal(val name: String, val age: Int) {
-                fun speak() {
-                    println("$name is speaking.")
+    
+    if (lang === 'kotlin') {
+        code = `<pre class="code-block">
+        <code class="language-` + lang + `">
+            // dependencies -> implementation "com.squareup.okhttp3:okhttp:4.9.3"
+
+            import okhttp3.*
+            import java.util.concurrent.TimeUnit
+
+            class WebSocketManager(private val userId: String) {
+                private val client = OkHttpClient.Builder()
+                    .pingInterval(30, TimeUnit.SECONDS)
+                    .build()
+
+                private lateinit var webSocket: WebSocket
+
+                fun initWebSocket() {
+                    val request = Request.Builder()
+                        .url("ws://${urlPrefixNotification}/notifications?clientname=$clientname")
+                        .build()
+
+                    webSocket = client.newWebSocket(request, object : WebSocketListener() {
+                        override fun onOpen(webSocket: WebSocket, response: Response) {
+                            println("WebSocket connection opened")
+                            webSocket.send("Hello, server!") // Send a message to the server
+                        }
+
+                        override fun onMessage(webSocket: WebSocket, text: String) {
+                            try {
+                                val data = JSONObject(text)
+                                val msgTitle = data.getString("msgtitle")
+                                val msgContent = data.getString("msgcontent")
+                                showNotification(msgTitle, msgContent)
+                                println("This is from onmsg: $msgTitle : $msgContent")
+                            } catch (e: JSONException) {
+                                println("Error parsing WebSocket message: \${e.message}")
+                            }
+                        }
+
+                        override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+                            println("WebSocket error: \${t.message}")
+                        }
+
+                        override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
+                            println("WebSocket closed: Code: $code, Reason: $reason")
+                        }
+                    })
+                    client.dispatcher.executorService.shutdown()
+                }
+
+                private fun showNotification(title: String, content: String) {
+                    // Implementation for showing notification in Android
+                    println("Notification - Title: $title, Content: $content")
                 }
             }
+        </code></pre>`;
+    } else if (lang === 'java') {
+        code = `<pre class="code-block">
+                <code class="language-` + lang + `">
+                   //dependencies-> implementation "com.squareup.okhttp3:okhttp:4.9.3" 
 
-            fun printNumbers() {
-                for (i in 1..5) {
-                    println("Number: $i")
+                import okhttp3.*;
+                import org.json.JSONException;
+                import org.json.JSONObject;
+                import java.util.concurrent.TimeUnit;
+
+                public class WebSocketManager {
+                    private final OkHttpClient client;
+                    private WebSocket webSocket;
+                    private final String userId;
+
+                    public WebSocketManager(String userId) {
+                        this.userId = userId;
+                        this.client = new OkHttpClient.Builder()
+                                .pingInterval(30, TimeUnit.SECONDS)
+                                .build();
+                    }
+
+                    public void initWebSocket() {
+                        Request request = new Request.Builder()
+                                .url("ws://${urlPrefixNotification}/notifications?clientname=" + clientname)
+                                .build();
+
+                        webSocket = client.newWebSocket(request, new WebSocketListener() {
+                            @Override
+                            public void onOpen(WebSocket webSocket, Response response) {
+                                System.out.println("WebSocket connection opened");
+                                webSocket.send("Hello, server!"); // Send a message to the server
+                            }
+
+                            @Override
+                            public void onMessage(WebSocket webSocket, String text) {
+                                try {
+                                    JSONObject data = new JSONObject(text);
+                                    String msgTitle = data.getString("msgtitle");
+                                    String msgContent = data.getString("msgcontent");
+                                    showNotification(msgTitle, msgContent);
+                                    System.out.println("This is from onmsg: " + msgTitle + " : " + msgContent);
+                                } catch (JSONException e) {
+                                    System.err.println("Error parsing WebSocket message: " + e.getMessage());
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(WebSocket webSocket, Throwable t, Response response) {
+                                System.err.println("WebSocket error: " + t.getMessage());
+                            }
+
+                            @Override
+                            public void onClosed(WebSocket webSocket, int code, String reason) {
+                                System.out.println("WebSocket closed: Code: " + code + ", Reason: " + reason);
+                            }
+                        });
+
+                        client.dispatcher().executorService().shutdown();
+                    }
+
+                    private void showNotification(String title, String content) {
+                        System.out.println("Notification - Title: " + title + ", Content: " + content);
+                    }
+                }
+         </code></pre>`;
+    } else if (lang === 'dart') {
+        code = `<pre class="code-block">
+        <code class="language-` + lang + `">
+            // Add this dependency in your pubspec.yaml
+            // dependencies: 
+            //   websocket: ^2.0.0
+
+            import 'package:websocket/websocket.dart';
+            import 'dart:convert';
+
+            class WebSocketManager {
+                final String userId;
+                late WebSocket _webSocket;
+
+                WebSocketManager(this.userId);
+
+                void initWebSocket() async {
+                    _webSocket = await WebSocket.
+                            connect('ws://${urlPrefixNotification}/notifications?clientname=$clientname');
+
+                    _webSocket.listen((data) {
+                        try {
+                            final jsonData = jsonDecode(data);
+                            final msgTitle = jsonData['msgtitle'];
+                            final msgContent = jsonData['msgcontent'];
+                            showNotification(msgTitle, msgContent);
+                            print("This is from onmsg: $msgTitle : $msgContent");
+                        } catch (e) {
+                            print("Error parsing WebSocket message: $e");
+                        }
+                    });
+                    print("WebSocket connection opened");
+                    _webSocket.add("Hello, server!"); // Send a message to the server
+                }
+
+                void showNotification(String title, String content) {
+                    print("Notification - Title: $title, Content: $content");
                 }
             }
+        </code></pre>`;
+    } else if (lang === 'swift') {
+        code = `<pre class="code-block">
+        <code class="language-` + lang + `">
+            // Import the Starscream library in your Podfile
+            // pod 'Starscream', '~> 4.0'
 
-            fun getGreeting(name: String): String {
-                return "Hello, $name!"
-            }
+            import Foundation
+            import Starscream
 
-            fun main() {
-                val dog = Animal("Rex", 5)
-                dog.speak()
-                val greeting = getGreeting("Alice")
-                println(greeting)
-                printNumbers()
-                val colors = listOf("Red", "Blue", "Green")
-                for (color in colors) {
-                    println("Color: $color")
+            class WebSocketManager: WebSocketDelegate {
+                var socket: WebSocket!
+                let userId: String
+
+                init(userId: String) {
+                    self.userId = userId
                 }
 
-                var count = 0
-                val numbers = (1..10).toList()
-                val evenNumbers = numbers.filter { it % 2 == 0 }
-                println("Even numbers: $evenNumbers")
+                func initWebSocket() {
+                    var request = URLRequest(url: URL(string: "ws://${urlPrefixNotification}/notifications?clientname=\(clientname)")!)
+                    request.timeoutInterval = 5
+                    socket = WebSocket(request: request)
+                    socket.delegate = self
+                    socket.connect()
+                }
+
+                func websocketDidConnect(socket: WebSocketClient) {
+                    print("WebSocket connection opened")
+                    socket.write(string: "Hello, server!") // Send a message to the server
+                }
+
+                func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+                    print("WebSocket disconnected: \(error?.localizedDescription ?? "No error")")
+                }
+
+                func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+                    do {
+                        if let data = text.data(using: .utf8) {
+                            let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                            if let jsonDict = jsonData as? [String: Any],
+                               let msgTitle = jsonDict["msgtitle"] as? String,
+                               let msgContent = jsonDict["msgcontent"] as? String {
+                                showNotification(title: msgTitle, content: msgContent)
+                                print("This is from onmsg: \(msgTitle) : \(msgContent)")
+                            }
+                        }
+                    } catch {
+                        print("Error parsing WebSocket message: \(error)")
+                    }
+                }
+
+                private func showNotification(title: String, content: String) {
+                    print("Notification - Title: \(title), Content: \(content)")
+                }
+            }
+        </code></pre>`;
+    } else if (lang === 'js') {
+        code = `<pre class="code-block">
+        <code class="language-` + lang + `">
+            function initWebSocket(userId) {
+                const ws = new WebSocket('ws://${urlPrefixNotification}/notifications?clientname=' + clientname);
+
+                ws.onopen = () => {
+                    console.log('WebSocket connection opened');
+                    ws.send('Hello, server!'); // Send a message to the server
+                };
+
+                ws.onmessage = (e) => {
+                    try {
+                        const data = JSON.parse(e.data);
+                        const msgTitle = data.msgtitle;
+                        const msgContent = data.msgcontent;
+                        showNotification(msgTitle, msgContent);
+                        console.log('This is from onmsg: ' + msgTitle + ' : ' + msgContent);
+                    } catch (error) {
+                        console.error('Error parsing WebSocket message', error);
+                    }
+                };
+
+                ws.onerror = (e) => {
+                    console.error('WebSocket error:', e.message);
+                };
+
+                ws.onclose = (e) => {
+                    console.log('WebSocket closed:', e.code, e.reason);
+                };
+            }
+
+            function showNotification(title, content) {
+                console.log('Notification - Title: ' + title + ', Content: ' + content);
             }
         </code></pre>`;
     }

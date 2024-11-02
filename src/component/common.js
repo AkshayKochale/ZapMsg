@@ -1,6 +1,7 @@
 
 const urlPrefixAuthetication = "http://localhost:8080";
 const urlPrefixServices = "http://localhost:8181";
+const urlPrefixNotification = "http://localhost:8182";
 
 async function zapAPICaller(type, url, input,sleepTime) {
     const fullUrl = url; 

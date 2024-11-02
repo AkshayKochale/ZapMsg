@@ -2,7 +2,7 @@
         {
             changeMainTab("clientcontent");
             let content=document.getElementById("clientcontent");
-        content.innerHTML=`<div class="searchDiv">
+             content.innerHTML=`<div class="searchDiv">
             <div class="title-client">Clients</div>
             <input class="searchText" type="text" placeholder="search"
             oninput="filterTable(event)"/>

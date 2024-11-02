@@ -166,11 +166,14 @@ function comparePassword()
 
 }
 
-async function submitRegistration(event)
+async function submitRegistration(event,checkUsername)
 {
        event.preventDefault(); 
        startLoader();
-        let isValidUsername= await validateUserName();
+
+       let isValidUsername=true; 
+       if(checkUsername) isValidUsername=  await validateUserName();
+
        if(!isValidUsername)
        {
         stopLoader();
@@ -204,3 +207,37 @@ async function submitRegistration(event)
 
 }
 
+
+
+async function updateRegistration(event)
+{
+       event.preventDefault(); 
+       startLoader();
+
+
+    const form = document.getElementById("updateForm");
+    const formData = new FormData(form);
+    const jsonData = {};
+
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+
+       const data = await zapAPICaller("post",urlPrefixServices+"/registration/register_update",jsonData,3000);
+        
+       stopLoader();
+          if(data && data.status=="success")
+          {
+                showToastMsg("Success",data.output,"success");
+
+                setTimeout(() => {
+                  window.location.href="/src/html/dashboard.html";
+              }, 2000);
+              
+          }
+          else
+          {
+            showToastMsg("Failed ",data.output,"failed");
+          }
+
+}

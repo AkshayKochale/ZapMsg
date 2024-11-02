@@ -100,11 +100,12 @@
 {
     position: relative;
     width: 30%;
+    height: 30px;
     border: 1px solid #ddd;
     text-align:  center;
-    padding-top: 1%;
     color: #434244;
     font-family: Raleway;
+    cursor: pointer;
 }
 
 .dropzone .dz-message .dz-button
@@ -140,3 +141,140 @@
     background-color: #c1b9ee;
 }
 
+.file-list {
+    list-style: none;
+    padding: 10px 0;
+    font-family: Raleway;
+}
+
+.file-list li {
+    font-size: 14px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    font-family: Raleway;
+}
+
+.file-list li .remove-file {
+    margin-left: 10px;
+    color: #7F4BC1;
+    border:none;
+    background: none;
+    cursor: pointer;
+    font-size: x-small;
+}
+
+.filemsg
+{
+    /* color: #434244; */
+    font-family: Raleway;
+}
+
+
+.emailPop
+{
+    position: absolute;
+    left: 23%;
+    top: 10%;
+    width: 75%;
+    height: 85vh;
+    background-color: #fff;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Raleway;
+}
+
+.cancel-btn-emailPop
+{
+    position: relative;
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    color: #7F4BC1;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    justify-content: unset;
+    right: -97%; 
+    animation: none !important;
+    
+}
+
+#preview-content
+{
+    position: relative;
+    width: 100%;
+    height: 72%;
+    font-family: Raleway;
+}
+
+.preview-subject{
+
+    position: relative;
+    width: 100%;
+    height: 6%;
+    /* border: 1px solid red; */
+    font-size: larger;
+    font-family: Raleway;
+    font-weight: 600;
+    padding-left: 2%;
+}
+
+#askdiv
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    height: 10%;
+}
+
+#prompt
+{
+    padding: 10px;    
+    position: relative;
+    width: 60%;
+
+
+}
+
+.generateEmail
+{
+    position: relative;
+    width: 8vw;
+    padding: 1.6vh;
+    border-radius: 1vw;
+    background-color: #7F4BC1;
+    border: none;
+    color: var(--main-color);
+    font-family: Raleway;
+}
+
+.typing-container
+{
+    position: relative;
+    width: 96%;
+    margin: 2%;
+    padding: 2%;
+    height: 72%;
+    border: 1px solid #434244;
+    overflow: auto;
+    font-family: Raleway;
+
+}
+
+.typing-container::after {
+    content: "|";
+    display: inline-block;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

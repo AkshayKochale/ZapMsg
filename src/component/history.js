@@ -32,6 +32,7 @@ function showHistoryTab()
     let historycontent= document.getElementById("historycontent");
     const dateInput = document.getElementById("history-date").value;
     
+    
 
        let inputdata={
             date:dateInput,
@@ -44,7 +45,7 @@ function showHistoryTab()
         let status =apiData.output;
 
         if(status==null || status==undefined )status="No data available";
-
+        stopLoader();
         showToastMsg("Failed", status, "Failed");
         return;
     }
@@ -91,7 +92,7 @@ function showHistoryTab()
          </div>
  
          <div id="table-tab" class="tab-content-history" style="display:none"></div>
-         <div class="showHistoryDiv" id="showHistoryDiv" style="display: none;"></div>
+        
     
     `;
  
@@ -231,6 +232,7 @@ function getTableSettingsHistory() {
         }
     };
 
+
     return setting;
 }
 
@@ -240,5 +242,44 @@ async function viewHistoryMesg(historyId)
     console.log("view history clicked !!!"+historyId);
     let showHistoryDiv=document.getElementById("showHistoryDiv");
     showHistoryDiv.style.display="block";
+    makeBackgroundBlur()
+    let historyMsgtitle=document.getElementById("historyMsg-title");
+    let historyMsg=document.getElementById("historyMsg-msg");
 
+    const apiData = await zapAPICaller("get", urlPrefixServices + "/history/getdetails/"+historyId, null, 0);
+    
+    if(apiData && apiData.status=="success")
+    {
+        let title=apiData.title;
+        let message=apiData.message;
+
+        historyMsgtitle.innerHTML=title;
+        historyMsg.innerHTML=message;
+    }
+    else
+    {
+        showToastMsg("Failed",apiData.output,"Failed");
+    }
+}
+
+function hideHistoryMsgDiv()
+{
+    let showHistoryDiv=document.getElementById("showHistoryDiv");
+    showHistoryDiv.style.display="none";
+    makeBackgroundBlur()
+}
+
+//
+// const clientcontent=document.getElementById("clientcontent");
+// const clientcontent=document.getElementById("clientcontent");
+
+function makeBackgroundBlur()
+{
+       const content=document.getElementById("historycontent")
+            content.classList.toggle("blur");
+
+            tabs.classList.toggle("blur");
+            collapseIcon.classList.toggle("blur");
+          
+           
 }

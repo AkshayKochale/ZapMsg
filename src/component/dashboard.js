@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded",async function() {
 function changeContent(tabName) 
 {
     const contentDiv = document.getElementById('content');
-
+    
     if(tabName=='none')
     {
         contentDiv.innerHTML='';
@@ -46,6 +46,7 @@ function changeContent(tabName)
     {
         contentDiv.innerHTML = `You clicked on: ${tabName}`;
     }
+   
 }
 
 let prevCondition=1;
@@ -96,6 +97,7 @@ let collapseIcon =document.getElementById("collapseIcon");
 function changeMainTab(tabname)
 {
     console.log("change main tab"+tabname);
+    
     let content =document.getElementById("content");
     let clientcontent =document.getElementById("clientcontent");
     let inappcontent=document.getElementById("inappcontent");
@@ -113,6 +115,7 @@ function changeMainTab(tabname)
     clientcontent.style.display="none";
 
     document.getElementById(tabname).style.display="flex";
+    clearEmailPop();
 }
 
 
