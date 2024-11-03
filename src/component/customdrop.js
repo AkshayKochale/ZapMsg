@@ -24,7 +24,7 @@ style.innerHTML = `
    font-family: Raleway;    
 }
 .multiselect-dropdown span.optext{
-  background-color:#ddcaf9;
+  background-color:#9f68ee;
   padding:1px 0.75em; 
   color:#FFF;
   font-family: Raleway;    
@@ -88,7 +88,7 @@ style.innerHTML = `
  background-color:#eeeef6;
   
 }
-.multiselect-dropdown span.maxselected {width:100%; padding:5px; border-radius:5px; background-color:#ddcaf9;}
+.multiselect-dropdown span.maxselected {width:100%; padding:5px; border-radius:5px; background-color:#9f68ee;}
 .multiselect-dropdown-all-selector {border-bottom:solid 1px #999;}
 `;
 document.head.appendChild(style);

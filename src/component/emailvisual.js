@@ -40,7 +40,7 @@ async function showEmailtab() {
                         <input type="file" id="fileInput" style="display: none;" accept="image/*,application/pdf" />
                         <ul id="fileList" class="file-list"></ul>
                     </div>
-                    <div class="preview-div utilDiv" id="preview-div">Preview</div>
+                    <div class="preview-div utilDiv" id="preview-div">Email Preview</div>
                     <div class="ai-div utilDiv" id="ai-div">Complete with AI (Beta)</div>
                 </div>
                 <button class="send-btn" onClick="collectEmailData()">Send</button>
@@ -138,8 +138,8 @@ async function collectEmailData() {
     formData.append("data", new Blob([JSON.stringify({
         token: gettokenfromlocalStorage(),
         clients: selectedUser,
-        notificationtitle: subject,
-        notificationmsg: emailContent
+        emailsubject: subject,
+        emailContent: emailContent
     })], { type: "application/json" }));
 
     if (selectedFile) {
@@ -195,9 +195,9 @@ function aiAutoComplete()
                 <input type="text" id="prompt" placeholder ="Provide a prompt for your AI-generated email..."/> 
                     <button class="generateEmail" onClick="generateEmail()">Generate</button>
                  </div>
+                 <button class="moveToEditor" id="copyAiEmail" style='display:none' onClick="copyAiEmail()">Copy</button>
              <div id="aiTypingDiv" class="typing-container"></div>
-    
-            
+          
     `;
 
     emailPop.innerHTML = html;
@@ -232,6 +232,8 @@ async function generateEmail()
 
 
     typeEffect("aiTypingDiv",apiData.output,10);
+
+    document.getElementById("copyAiEmail").style.display="inline"
 
 }
 
@@ -278,3 +280,16 @@ function typeEffect(elementId, text, delay = 100) {
 }
 
 
+function copyAiEmail()
+{
+    let data=document.getElementById("aiTypingDiv").innerText ;
+    navigator.clipboard.writeText(data);
+
+    let copyBtn=document.getElementById("copyAiEmail") ;
+    copyBtn.innerText='Copied!'
+
+    setTimeout(()=>
+        {
+            copyBtn.innerText='Copy'
+        },2000);
+}
